@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react'
+import { json } from 'react-router-dom'
 
 export const ApiPoke = createContext()
 
@@ -8,22 +9,60 @@ const PokeApiContext = ({ children }) => {
 
 
     useEffect(() => {
-        pokemonCharacters()
+
+        fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10`) //poner 1300
+
+            .then((response) => response.json())
+            .then((json) => {
+                const misPokemones = (json.results)
+                misPokemones.map((miPoke) => {
+                    fetch(miPoke.url)
+                        .then((response) => response.json())
+                        .then((json) => {
+                            // console.log(json)
+                            setPokemon(pokemon => [...pokemon, json])
+                        })
+                })
+            })
     }, [])
-    
 
-    const pokemonCharacters = () => {
 
-        fetch('https://pokeapi.co/api/v2/pokemon/?limit=1300')
-            .then(response => response.json())
-            .then(json => {
-                setPokemon(json.results)
+    const [searchResult, setSearchResult] = useState([])
+
+    const searchByCategory = (CategoryId, SubCategory) => {
+
+        setSearchResult([])
+
+        fetch(`https://pokeapi.co/api/v2/${CategoryId}/${SubCategory}?limit=400`) //poner limite 400
+            .then((response) => response.json())
+            .then((json) => {
+                // console.log(json);
+                setSearchResult(json)
             })
 
-            .catch((error) => {
-                console.log(error);
-            })
     }
+
+
+    // fetch(`https://pokeapi.co/api/v2/${CategoryId}/${SubCategory}?limit=4`) //poner limite 400
+    // .then((response) => response.json())
+    // .then((json) => {
+    //     const categoryItem = json.results
+
+    //     categoryItem.map(eachCategoryItem => {
+    //         fetch(eachCategoryItem.url)
+    //             .then((response) => response.json())
+    //             .then((json) => {
+    //                 // console.log(json);
+    //                 setSearchResult(searchResult => [...searchResult, json])
+    //             })
+    //     });
+    // })
+
+
+
+
+
+
 
 
 
@@ -34,7 +73,7 @@ const PokeApiContext = ({ children }) => {
 
 
     return (
-        <ApiPoke.Provider value={{ pokemon,   mayPrimera }}>
+        <ApiPoke.Provider value={{ searchResult, searchByCategory, pokemon, mayPrimera }}>
             {children}
         </ApiPoke.Provider>
     )

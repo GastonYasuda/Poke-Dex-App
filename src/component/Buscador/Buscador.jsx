@@ -1,35 +1,36 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
 import { ApiPoke } from '../../context/PokeApiContext';
+import { Link } from 'react-router-dom';
 
 
 
-const Buscador = () => {
+const Buscador = ({ inputCharacter, setInputCharacter }) => {
 
-    const { setInputCharacter } = useContext(ApiPoke)
+    const { } = useContext(ApiPoke)
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    const onSubmit = data => {
-        console.log(data)
-        console.log(data.searchValue);
-        setInputCharacter(data.searchValue)
-    };
 
+    // const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+
+    const handleChange = (e) => {
+        console.log(e.target.value);
+        setInputCharacter(e.target.value)
+    }
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("searchValue", { required: true })} />
+            <form >
 
-                {/* DESPUES AGREGAR VALIDACIONES DEL INPUT */}
+                <input type="text" onChange={handleChange} />
 
-                {errors.searchValue && <span>This field is required</span>}
+                <Link to={`/character/${inputCharacter}`} >
+                    SEARCH
+                </Link>
 
 
-                < input type="submit" />
-
-            </form>
+            </form >
         </>
     )
 }

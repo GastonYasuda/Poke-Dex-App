@@ -10,14 +10,11 @@ const Character = () => {
     const { } = useContext(ApiPoke)
 
     const [pokemonSelect, setPokemonSelect] = useState([])
+    const [imgUrl, setImgUrl] = useState("")
 
     useEffect(() => {
 
-
-
         if (pokemonSelect.length === 0) {
-
-
             fetch(`https://pokeapi.co/api/v2/pokemon/${characterId}`)
 
                 .then(response => response.json())
@@ -29,17 +26,25 @@ const Character = () => {
                     console.log(error);
                 })
 
-        } else if (pokemonSelect.length !== 0 && pokemonSelect !== undefined) {
+        } else {
 
-            console.log(pokemonSelect);
-            console.log(pokemonSelect.id);
-            console.log(pokemonSelect.name);
-            console.log(pokemonSelect["sprites"].front_default);
+            if (pokemonSelect["sprites"].other.dream_world.front_default === null) {
+                setImgUrl(pokemonSelect["sprites"].front_default)
+            } else {
+                setImgUrl(pokemonSelect["sprites"].other.dream_world.front_default)
+            }
         }
 
 
-    }, [characterId, pokemonSelect])
 
+        console.log("weight", pokemonSelect.weight);
+        // console.log("abilities", pokemonSelect["abilities"]);
+
+
+
+
+
+    }, [characterId, pokemonSelect])
 
 
 
@@ -53,14 +58,23 @@ const Character = () => {
                     <>
                         <h1>{pokemonSelect.id}</h1>
                         <h5>{pokemonSelect.name}</h5>
-                        <img src={pokemonSelect["sprites"].front_default} alt={pokemonSelect.name} />
+                        <img src={imgUrl} alt={pokemonSelect.name} />
+                        <p>Weight: {pokemonSelect.weight}Kg.</p>
+
+                        {
+                            pokemonSelect["abilities"].map((cadaAbility, i) => {
+                                return (
+                                    <Link to={`/ability/${cadaAbility.ability.name}`} key={i}>
+                                        <p>{cadaAbility.ability.name}</p>
+                                    </Link>
+                                )
+                            })
+                        }
                     </>
                     :
                     <h1>ERROR <br /> PROXIMAMENTE UN LOADING</h1>
 
             }
-
-            {/*  tengo que entrar a url que esta en characterId... ahi tiene que estar todos los elementos (id, nombre, sprites, abilities) */}
         </>
     )
 }
