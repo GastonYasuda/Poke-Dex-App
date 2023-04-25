@@ -1,27 +1,45 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { ApiPoke } from '../../context/PokeApiContext';
+import { Card, CardHeader, CardBody, SimpleGrid, Heading, Text, Image } from '@chakra-ui/react'
+
+
 
 const ItemList = ({ pokemon }) => {
 
 
     return (
-        <div>
+        <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(145px, 1fr))'>
             {
                 pokemon.map((unPokemon, i) => {
                     return (
-                        <Fragment key={i}>
+                        <Card key={i}>
                             <Link to={`/character/${unPokemon.name}`}>
-                                <h3>{unPokemon.id}</h3>
-                                <h5>{unPokemon.name}</h5>
-                                <img src={unPokemon["sprites"].other.dream_world.front_default} alt={unPokemon.name} />
+
+                                <CardHeader>
+                                    <Heading size='sd'> {unPokemon.name}</Heading>
+                                    <Text>Id: {unPokemon.id}</Text>
+                                </CardHeader>
+
+                                {
+                                    unPokemon["sprites"].other.dream_world.front_default !== null ?
+                                        <Image
+                                            objectFit='cover'
+                                            src={unPokemon["sprites"].other.dream_world.front_default} alt={unPokemon.name}
+                                        />
+                                        :
+                                        <Image
+                                            objectFit='cover'
+                                            src={unPokemon["sprites"].front_default} alt={unPokemon.name}
+                                        />
+                                }
                             </Link>
-                        </Fragment>
+                        </Card>
                     )
                 })
             }
 
-        </div >
+        </SimpleGrid>
+
     )
 }
 

@@ -1,7 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useForm } from "react-hook-form";
+import React, { useContext } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext';
 import { Link } from 'react-router-dom';
+import { Input, InputGroup, InputRightElement, Button } from '@chakra-ui/react'
+import { SearchIcon } from '@chakra-ui/icons'
+
+
 
 
 
@@ -19,15 +22,32 @@ const Buscador = ({ inputCharacter, setInputCharacter }) => {
         setInputCharacter(e.target.value)
     }
 
+
+
     return (
         <>
             <form >
+                <InputGroup>
+                    <InputRightElement>
 
-                <input type="text" onChange={handleChange} />
 
-                <Link to={`/character/${inputCharacter}`} >
-                    SEARCH
-                </Link>
+                        <Button >
+                            <Link to={`/character/${inputCharacter}`} >
+                                <SearchIcon color='gray.300' />
+                            </Link>
+                        </Button>
+
+                    </InputRightElement>
+
+
+                    <Input
+                        type="text"
+                        onChange={handleChange}
+                    />
+                </InputGroup>
+
+
+
 
 
             </form >
