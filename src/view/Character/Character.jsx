@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import VolverHome from '../../component/VolverHome/VolverHome'
@@ -15,6 +15,7 @@ const Character = () => {
 
 
     useEffect(() => {
+
         if (pokemonSelect.length === 0) {
             fetch(`https://pokeapi.co/api/v2/pokemon/${characterId}`)
 
@@ -37,19 +38,9 @@ const Character = () => {
 
 
 
-        if (searchResult !== undefined && Object.keys(searchResult).length !== 0) {
-            console.log(Object.keys(searchResult).length);
-            console.log(searchResult);
+    }, [characterId, pokemonSelect])
 
 
-            abilityInfo(searchResult, "flavor_text_entries", "en", "flavor_text")
-            abilityInfo(searchResult, "names", "en", "name")
-            abilityInfo(searchResult, "effect_entries", "en", "effect")
-
-        }
-
-
-    }, [characterId, pokemonSelect, searchResult])
 
 
     const showAbility = (queHabilidad) => {
@@ -57,7 +48,20 @@ const Character = () => {
 
         searchByCategory("ability", queHabilidad)
 
+        if (searchResult !== undefined && Object.keys(searchResult).length !== 0) {
+
+            console.log(Object.keys(searchResult).length);
+            console.log(searchResult);
+
+            abilityInfo(searchResult, "flavor_text_entries", "en", "flavor_text")
+            abilityInfo(searchResult, "names", "en", "name")
+            abilityInfo(searchResult, "effect_entries", "en", "effect")
+
+        }
+
     }
+
+
 
 
     return (
@@ -77,8 +81,8 @@ const Character = () => {
                                     <Text>{pokemonSelect.id}</Text>
                                     <Heading size='md'>{pokemonSelect.name}</Heading>
                                     <Text>Weight: {pokemonSelect.weight}Kg.</Text>
-                                    <Text>{abilityInfoFlavorTxt}</Text>
                                     <Text>{abilityInfoNameTxt}</Text>
+                                    <Text>{abilityInfoFlavorTxt}</Text>
                                     <Text>{abilityInfoEffectTxt}</Text>
 
                                 </Stack>
@@ -92,11 +96,13 @@ const Character = () => {
                                     {
                                         pokemonSelect["abilities"].map((cadaAbility, i) => {
                                             return (
-                                                <Button colorScheme='blue' key={i} onClick={() => { showAbility(cadaAbility.ability.name) }}>
-                                                    {/* <Link to={`/ability/${cadaAbility.ability.name}`} key={i}> */}
-                                                    <p>{cadaAbility.ability.name}</p>
-                                                    {/* </Link> */}
-                                                </Button>
+                                                <Fragment key={i}>
+                                                    <Button colorScheme='blue' key={i} onClick={() => { showAbility(cadaAbility.ability.name) }}>
+                                                        {/* <Link to={`/ability/${cadaAbility.ability.name}`} key={i}> */}
+                                                        <p>{cadaAbility.ability.name}</p>
+                                                        {/* </Link> */}
+                                                    </Button>
+                                                </Fragment>
                                             )
                                         })
                                     }

@@ -10,7 +10,7 @@ const PokeApiContext = ({ children }) => {
 
     useEffect(() => {
 
-        fetch(`https://pokeapi.co/api/v2/pokemon/?limit=20`) //poner 1300
+        fetch(`https://pokeapi.co/api/v2/pokemon/?limit=50`) //poner 1300
 
             .then((response) => response.json())
             .then((json) => {
@@ -68,7 +68,6 @@ const PokeApiContext = ({ children }) => {
 
     const abilityInfo = (collection, key, lang, tras) => {
         const texto = collection[key]
-        console.log(texto);
 
         const result = texto.find(txt => txt.language.name === lang)
 
@@ -95,7 +94,7 @@ const PokeApiContext = ({ children }) => {
 
 
     return (
-        <ApiPoke.Provider value={{ abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, searchResult, searchByCategory, pokemon, mayPrimera }}>
+        <ApiPoke.Provider value={{ setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, searchResult, searchByCategory, pokemon, mayPrimera }}>
             {children}
         </ApiPoke.Provider>
     )
