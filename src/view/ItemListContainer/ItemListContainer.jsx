@@ -15,13 +15,11 @@ const ItemListContainer = () => {
 
 
     return (
-        <div>
+        <div className='main'>
             <Buscador inputCharacter={inputCharacter} setInputCharacter={setInputCharacter} />
 
 
             <Link to={`/character/${inputCharacter}`} />
-
-            {/* hacer muchos links con las diferentes categorias */}
 
 
             <ItemList pokemon={pokemon} />

@@ -13,16 +13,10 @@ function App() {
           <Route path='/' element={<ItemListContainer />} />
           <Route path='/character/:characterId' element={<Character />} />
 
-
-
-
         </Routes>
-
-
 
       </BrowserRouter>
     </PokeApiContext>
-
   )
 }
 
