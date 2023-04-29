@@ -10,6 +10,23 @@
     font-family: 'Mulish', sans-serif;
 }
 
+.d-flex-col-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.d-flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.d-flex-row-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .card {
     min-height: 250px;
 
@@ -17,3 +34,5 @@
         max-height: 120px;
     }
 }
+
+@import "../view/Character/characterCard.scss";

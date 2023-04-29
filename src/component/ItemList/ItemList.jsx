@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-// import { Card, CardHeader, CardBody, SimpleGrid, Heading, Text, Image } from '@chakra-ui/react'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -33,12 +32,7 @@ const ItemList = ({ pokemon }) => {
                                             :
                                             <Card.Img className='cardImg' src={unPokemon["sprites"].front_default} alt={unPokemon.name} />
                                     }
-
-
                                 </Card.Body>
-
-
-
                             </Card>
                         </Col>
                     </Link>

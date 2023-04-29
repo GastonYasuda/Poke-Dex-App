@@ -1,24 +1,23 @@
 import React, { useContext } from 'react'
-import { Button } from '@chakra-ui/react'
+import Button from 'react-bootstrap/Button';
 import { ApiPoke } from '../../context/PokeApiContext'
 
 
 const VolverHome = () => {
 
-    const { setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt } = useContext(ApiPoke)
+    const { setSearchResult} = useContext(ApiPoke)
 
 
     const clearAbility = () => {
-        window.history.back()
+        setSearchResult([])
 
-        setAbilityInfoFlavorTxt()
-        setAbilityInfoEffectTxt()
-        setAbilityInfoNameTxt()
+        console.log("TENGO QUE BORRAR");
+        window.history.back()
     }
 
     return (
 
-        <Button colorScheme='red' variant='solid' onClick={() => { clearAbility() }}>
+        <Button onClick={() => { clearAbility() }}>
             VOLVER
         </Button>
     )

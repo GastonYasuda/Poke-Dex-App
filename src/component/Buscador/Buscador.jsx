@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext';
 import { Link } from 'react-router-dom';
-import { Input, InputGroup, InputRightElement, Button } from '@chakra-ui/react'
-import { SearchIcon } from '@chakra-ui/icons'
-
-
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import { FaSearch } from 'react-icons/fa';
 
 
 
@@ -22,36 +22,18 @@ const Buscador = ({ inputCharacter, setInputCharacter }) => {
         setInputCharacter(e.target.value)
     }
 
-
-
     return (
-        <>
-            <form >
-                <InputGroup>
-                    <InputRightElement>
-
-
-                        <Button >
-                            <Link to={`/character/${inputCharacter}`} >
-                                <SearchIcon color='gray.300' />
-                            </Link>
-                        </Button>
-
-                    </InputRightElement>
-
-
-                    <Input
-                        type="text"
-                        onChange={handleChange}
-                    />
-                </InputGroup>
-
-
-
-
-
-            </form >
-        </>
+        <InputGroup className="mb-3">
+            <Form.Control
+                placeholder="Search by Name or Id"
+                onChange={handleChange}
+            />
+            <Button variant="outline-secondary" id="button-addon2" >
+                <Link to={`/character/${inputCharacter}`} >
+                    <FaSearch />
+                </Link>
+            </Button>
+        </InputGroup>
     )
 }
 

@@ -2,19 +2,24 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import VolverHome from '../../component/VolverHome/VolverHome'
-import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Stack, Text } from '@chakra-ui/react'
 import { ApiPoke } from '../../context/PokeApiContext'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Loading from '../../component/Loading/Loading'
+
 
 const Character = () => {
 
     const { characterId } = useParams()
-    const { searchResult, searchByCategory, abilityInfo, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt } = useContext(ApiPoke)
+    const { mayPrimera, searchResult, searchByCategory, abilityInfo, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, moves } = useContext(ApiPoke)
 
     const [pokemonSelect, setPokemonSelect] = useState([])
     const [imgUrl, setImgUrl] = useState("")
+    const [showAbility, setShowAbility] = useState(false)
 
 
     useEffect(() => {
+
 
         if (pokemonSelect.length === 0) {
             fetch(`https://pokeapi.co/api/v2/pokemon/${characterId}`)
@@ -37,31 +42,31 @@ const Character = () => {
         }
 
 
-
     }, [characterId, pokemonSelect])
 
+    useEffect(() => {
 
-
-
-    const showAbility = (queHabilidad) => {
-        console.log("muestro habilidad", queHabilidad);
-
-        searchByCategory("ability", queHabilidad)
-
-        if (searchResult !== undefined && Object.keys(searchResult).length !== 0) {
-
-            console.log(Object.keys(searchResult).length);
-            console.log(searchResult);
+        if (searchResult.length !== 0) {
 
             abilityInfo(searchResult, "flavor_text_entries", "en", "flavor_text")
             abilityInfo(searchResult, "names", "en", "name")
             abilityInfo(searchResult, "effect_entries", "en", "effect")
 
+
+
+            if (abilityInfoFlavorTxt !== '') {
+                setShowAbility(true)
+            }
         }
 
+    }, [searchResult, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, moves])
+
+
+    const seeAbility = (queHabilidad) => {
+        console.log("muestro habilidad", queHabilidad);
+
+        searchByCategory("ability", queHabilidad)
     }
-
-
 
 
     return (
@@ -69,49 +74,44 @@ const Character = () => {
             <VolverHome />
             {
                 pokemonSelect.length !== 0 && pokemonSelect !== undefined ?
-                    <>
-                        <Card maxW='sm'>
-                            <CardBody>
-                                <Image
-                                    src={imgUrl}
-                                    alt={pokemonSelect.name}
-                                    borderRadius='lg'
-                                />
-                                <Stack mt='6' spacing='3'>
-                                    <Text>{pokemonSelect.id}</Text>
-                                    <Heading size='md'>{pokemonSelect.name}</Heading>
-                                    <Text>Weight: {pokemonSelect.weight}Kg.</Text>
-                                    <Text>{abilityInfoNameTxt}</Text>
-                                    <Text>{abilityInfoFlavorTxt}</Text>
-                                    <Text>{abilityInfoEffectTxt}</Text>
 
-                                </Stack>
+                    <Card className='characterCard'>
+                        <Card.Header>{mayPrimera(pokemonSelect.name)}</Card.Header>
 
-                            </CardBody>
 
-                            <Divider />
+                        <Card.Body className='characterCard__body d-flex-col-center'>
+                            <Card.Img className='characterCard__body-img' src={imgUrl} alt={pokemonSelect.name} />
+                            {
+                                showAbility ?
+                                    <>
+                                        <Card.Text>Ability: {abilityInfoNameTxt}</Card.Text>
+                                        <Card.Text>{abilityInfoFlavorTxt}</Card.Text>
+                                        <Card.Text>{abilityInfoEffectTxt}</Card.Text>
+                                    </>
+                                    : null
+                            }
+                        </Card.Body>
 
-                            <CardFooter>
-                                <ButtonGroup spacing='2'>
-                                    {
-                                        pokemonSelect["abilities"].map((cadaAbility, i) => {
-                                            return (
-                                                <Fragment key={i}>
-                                                    <Button colorScheme='blue' key={i} onClick={() => { showAbility(cadaAbility.ability.name) }}>
-                                                        {/* <Link to={`/ability/${cadaAbility.ability.name}`} key={i}> */}
-                                                        <p>{cadaAbility.ability.name}</p>
-                                                        {/* </Link> */}
-                                                    </Button>
-                                                </Fragment>
-                                            )
-                                        })
-                                    }
-                                </ButtonGroup>
-                            </CardFooter>
-                        </Card>
-                    </>
+
+
+                        <Card.Footer className='characterCard__footer'>
+                            <div className="characterCard__footer-button d-flex-row">
+                                {
+                                    pokemonSelect["abilities"].map((cadaAbility, i) => {
+                                        return (
+                                            <Button key={i} onClick={() => { seeAbility(cadaAbility.ability.name) }}>
+                                                <p>{cadaAbility.ability.name}</p>
+                                            </Button >
+                                        )
+                                    })
+                                }
+                            </div>
+
+                        </Card.Footer>
+
+                    </Card>
                     :
-                    <h1>ERROR <br /> PROXIMAMENTE UN LOADING</h1>
+                    <Loading />
             }
         </>
     )

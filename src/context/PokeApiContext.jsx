@@ -43,47 +43,34 @@ const PokeApiContext = ({ children }) => {
     }
 
 
-    // fetch(`https://pokeapi.co/api/v2/${CategoryId}/${SubCategory}?limit=4`) //poner limite 400
-    // .then((response) => response.json())
-    // .then((json) => {
-    //     const categoryItem = json.results
-
-    //     categoryItem.map(eachCategoryItem => {
-    //         fetch(eachCategoryItem.url)
-    //             .then((response) => response.json())
-    //             .then((json) => {
-    //                 // console.log(json);
-    //                 setSearchResult(searchResult => [...searchResult, json])
-    //             })
-    //     });
-    // })
-
-
     const [abilityInfoFlavorTxt, setAbilityInfoFlavorTxt] = useState("")
     const [abilityInfoNameTxt, setAbilityInfoNameTxt] = useState("")
     const [abilityInfoEffectTxt, setAbilityInfoEffectTxt] = useState("")
+    const [moves, setMoves] = useState("")
 
 
 
 
     const abilityInfo = (collection, key, lang, tras) => {
+
+
         const texto = collection[key]
 
         const result = texto.find(txt => txt.language.name === lang)
 
         if (tras === "flavor_text") {
-            console.log(result[tras])
 
             setAbilityInfoFlavorTxt(result[tras])
 
         } else if (tras === "name") {
-            console.log(result[tras])
 
             setAbilityInfoNameTxt(result[tras])
+
         } else if (tras === "effect") {
-            console.log(result[tras])
 
             setAbilityInfoEffectTxt(result[tras])
+        } else if (tras === "moveName") {
+            setMoves(result[tras])
         }
     }
 
@@ -94,7 +81,7 @@ const PokeApiContext = ({ children }) => {
 
 
     return (
-        <ApiPoke.Provider value={{ setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, searchResult, searchByCategory, pokemon, mayPrimera }}>
+        <ApiPoke.Provider value={{ moves, setSearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, searchResult, searchByCategory, pokemon, mayPrimera }}>
             {children}
         </ApiPoke.Provider>
     )

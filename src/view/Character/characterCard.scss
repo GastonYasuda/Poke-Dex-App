@@ -1,0 +1,22 @@
+.characterCard {
+    width: 80%;
+    margin: 0 auto;
+
+    &__body {
+        width: 100%;
+
+        &-img {
+            max-width: 200px;
+        }
+
+    }
+
+    &__footer {
+
+        &-button {
+            justify-content: space-evenly;
+            width: 80%;
+            margin: 0 auto;
+        }
+    }
+}
