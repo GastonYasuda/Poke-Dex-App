@@ -5,13 +5,11 @@ import { ApiPoke } from '../../context/PokeApiContext'
 
 const VolverHome = () => {
 
-    const { setSearchResult} = useContext(ApiPoke)
+    const { setAbilitySearchResult } = useContext(ApiPoke)
 
 
     const clearAbility = () => {
-        setSearchResult([])
-
-        console.log("TENGO QUE BORRAR");
+        setAbilitySearchResult([])
         window.history.back()
     }
 

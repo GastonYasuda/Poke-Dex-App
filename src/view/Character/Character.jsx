@@ -6,34 +6,30 @@ import { ApiPoke } from '../../context/PokeApiContext'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Loading from '../../component/Loading/Loading'
+import Ability from '../../component/Ability/Ability'
 
 
 const Character = () => {
 
     const { characterId } = useParams()
-    const { mayPrimera, searchResult, searchByCategory, abilityInfo, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, moves } = useContext(ApiPoke)
+    const { pokemonSelect, mayPrimera, searchBySubCategory, specieSearchResult } = useContext(ApiPoke)
 
-    const [pokemonSelect, setPokemonSelect] = useState([])
     const [imgUrl, setImgUrl] = useState("")
     const [showAbility, setShowAbility] = useState(false)
+    const [generation, setGeneration] = useState([])
 
 
     useEffect(() => {
 
 
-        if (pokemonSelect.length === 0) {
-            fetch(`https://pokeapi.co/api/v2/pokemon/${characterId}`)
+        if (pokemonSelect.length === 0 || pokemonSelect === undefined) {
+            searchBySubCategory("pokemon", characterId, "pokemon")
 
-                .then(response => response.json())
-                .then(json => {
-                    setPokemonSelect(json)
-                })
-
-                .catch((error) => {
-                    console.log(error);
-                })
 
         } else {
+            searchBySubCategory("pokemon", characterId, "pokemon")
+
+
             if (pokemonSelect["sprites"].other.dream_world.front_default === null) {
                 setImgUrl(pokemonSelect["sprites"].front_default)
             } else {
@@ -42,30 +38,33 @@ const Character = () => {
         }
 
 
+
+
+
     }, [characterId, pokemonSelect])
 
     useEffect(() => {
 
-        if (searchResult.length !== 0) {
+        searchBySubCategory("pokemon-species", characterId, "specie")
 
-            abilityInfo(searchResult, "flavor_text_entries", "en", "flavor_text")
-            abilityInfo(searchResult, "names", "en", "name")
-            abilityInfo(searchResult, "effect_entries", "en", "effect")
-
+        if (specieSearchResult.length === 0 || specieSearchResult === undefined) {
+            // de aca puedo sacar generacion, evolution-chain,habitat
 
 
-            if (abilityInfoFlavorTxt !== '') {
-                setShowAbility(true)
-            }
+        } else if (specieSearchResult.length !== 0 || specieSearchResult !== undefined) {
+            // console.log(specieSearchResult)
+
+            setGeneration(specieSearchResult["generation"])
         }
 
-    }, [searchResult, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, moves])
+
+    }, [pokemonSelect])
+
 
 
     const seeAbility = (queHabilidad) => {
-        console.log("muestro habilidad", queHabilidad);
-
-        searchByCategory("ability", queHabilidad)
+        searchBySubCategory("ability", queHabilidad, "ability")
+        setShowAbility(true)
     }
 
 
@@ -76,26 +75,33 @@ const Character = () => {
                 pokemonSelect.length !== 0 && pokemonSelect !== undefined ?
 
                     <Card className='characterCard'>
-                        <Card.Header>{mayPrimera(pokemonSelect.name)}</Card.Header>
+                        <Card.Header>
+                            {mayPrimera(pokemonSelect.name)}
+
+                            {
+                                generation.length !== 0 &&
+                                <Link to={`/generation/o`} >
+                                    {(generation.name).toUpperCase()}
+                                </Link>
+
+                            }
+
+
+                        </Card.Header>
 
 
                         <Card.Body className='characterCard__body d-flex-col-center'>
                             <Card.Img className='characterCard__body-img' src={imgUrl} alt={pokemonSelect.name} />
-                            {
-                                showAbility ?
-                                    <>
-                                        <Card.Text>Ability: {abilityInfoNameTxt}</Card.Text>
-                                        <Card.Text>{abilityInfoFlavorTxt}</Card.Text>
-                                        <Card.Text>{abilityInfoEffectTxt}</Card.Text>
-                                    </>
-                                    : null
-                            }
+
+                            <Ability showAbility={showAbility} />
+
                         </Card.Body>
 
 
 
-                        <Card.Footer className='characterCard__footer'>
+                        < Card.Footer className='characterCard__footer'>
                             <div className="characterCard__footer-button d-flex-row">
+                                Ability:
                                 {
                                     pokemonSelect["abilities"].map((cadaAbility, i) => {
                                         return (
@@ -106,7 +112,6 @@ const Character = () => {
                                     })
                                 }
                             </div>
-
                         </Card.Footer>
 
                     </Card>

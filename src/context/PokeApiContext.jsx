@@ -22,37 +22,57 @@ const PokeApiContext = ({ children }) => {
                             // console.log(json)
                             setPokemon(pokemon => [...pokemon, json])
                         })
+                        .catch((error) => console.log(error))
                 })
             })
     }, [])
 
 
-    const [searchResult, setSearchResult] = useState([])
+    //--------------------------------------------------------------SEARCH CATEGORY
 
-    const searchByCategory = (CategoryId, SubCategory) => {
+    // const [generation, setGeneration] = useState([])
 
-        setSearchResult([])
+    // const searchByCategory = () => {
+    //     fetch
+    // }
+
+
+
+    //--------------------------------------------------------------SEARCH SUBCATEGORY
+
+    const [pokemonSelect, setPokemonSelect] = useState([])
+    const [abilitySearchResult, setAbilitySearchResult] = useState([])
+    const [specieSearchResult, setSpecieSearchResult] = useState([])
+
+
+    const searchBySubCategory = (CategoryId, SubCategory, state) => {
+
+        setAbilitySearchResult([])
 
         fetch(`https://pokeapi.co/api/v2/${CategoryId}/${SubCategory}?limit=400`) //poner limite 400
             .then((response) => response.json())
             .then((json) => {
                 // console.log(json);
-                setSearchResult(json)
-            })
 
+                if (state === "pokemon") {
+                    setPokemonSelect(json)
+
+                } else if (state === "ability") {
+                    setAbilitySearchResult(json)
+
+                } else if (state === "specie") {
+                    setSpecieSearchResult(json)
+                }
+            })
     }
 
 
     const [abilityInfoFlavorTxt, setAbilityInfoFlavorTxt] = useState("")
     const [abilityInfoNameTxt, setAbilityInfoNameTxt] = useState("")
     const [abilityInfoEffectTxt, setAbilityInfoEffectTxt] = useState("")
-    const [moves, setMoves] = useState("")
-
-
 
 
     const abilityInfo = (collection, key, lang, tras) => {
-
 
         const texto = collection[key]
 
@@ -69,8 +89,6 @@ const PokeApiContext = ({ children }) => {
         } else if (tras === "effect") {
 
             setAbilityInfoEffectTxt(result[tras])
-        } else if (tras === "moveName") {
-            setMoves(result[tras])
         }
     }
 
@@ -81,7 +99,9 @@ const PokeApiContext = ({ children }) => {
 
 
     return (
-        <ApiPoke.Provider value={{ moves, setSearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, searchResult, searchByCategory, pokemon, mayPrimera }}>
+
+        <ApiPoke.Provider value={{ pokemonSelect, specieSearchResult, setAbilitySearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, abilitySearchResult, searchBySubCategory, pokemon, mayPrimera }}>
+
             {children}
         </ApiPoke.Provider>
     )

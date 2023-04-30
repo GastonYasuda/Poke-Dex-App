@@ -13,9 +13,7 @@ const Buscador = ({ inputCharacter, setInputCharacter }) => {
     const { } = useContext(ApiPoke)
 
 
-
-    // const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
+    //FALTA PONER VALIDACIONES DEL INPUT!!!
 
     const handleChange = (e) => {
         console.log(e.target.value);

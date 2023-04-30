@@ -12,7 +12,7 @@ const ItemList = ({ pokemon }) => {
 
     return (
 
-        <Row xs={1} sm={3} md={4} lg={5} className="g-4">
+        <Row xs={1} sm={2} md={4} lg={5} className="g-4">
 
             {
                 pokemon.map((unPokemon, i) => (
