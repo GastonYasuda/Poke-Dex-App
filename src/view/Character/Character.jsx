@@ -54,8 +54,8 @@ const Character = () => {
                         <Card.Header>
 
                             {mayPrimera(pokemonSelect.name)}
-                            <Generation />
-                            
+                            <Generation characterId={characterId} />
+
                         </Card.Header>
 
 

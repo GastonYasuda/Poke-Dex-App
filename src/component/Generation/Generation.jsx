@@ -1,23 +1,38 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext'
 import { Link } from 'react-router-dom'
 
-const Generation = () => {
+const Generation = ({ characterId }) => {
 
-    const { searchByCategory } = useContext(ApiPoke)
+    const { generationSearchResult, searchByCategory, searchBySubCategory, specieSearchResult } = useContext(ApiPoke)
 
 
     useEffect(() => {
-
+        searchBySubCategory("pokemon-species", characterId, "specie") //resultado es specieSearchResult
     }, [])
 
+
+    useEffect(() => {
+        if (specieSearchResult.length !== 0) {
+            searchByCategory(specieSearchResult.generation.url, "generationResult") //resultado es generationSearchResult
+        }
+    }, [specieSearchResult])
+
+
     return (
-        <Link to={`/generation/oooo`}>
-            dddd
-            {/* {(generation.name)} */}
+        <>
+            {
+                generationSearchResult.length !== 0 &&
 
-        </Link>
+                <Link to={`/generation/${generationSearchResult.name}`}>
+                    {
+                        (generationSearchResult.name).toUpperCase()
+                    }
+                </Link>
 
+
+            }
+        </>
     )
 }
 
