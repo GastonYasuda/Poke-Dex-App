@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useEffect } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext'
 import Loading from '../../component/Loading/Loading'
 import { Link, useParams } from 'react-router-dom'
+import VolverHome from '../../component/VolverHome/VolverHome'
 
 const PokeByGeneration = () => {
 
@@ -53,6 +54,7 @@ const PokeByGeneration = () => {
 
     return (
         <>
+            <VolverHome />
             {
                 generationSearchResult.length !== 0
                     ?

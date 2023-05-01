@@ -1,23 +1,16 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Button from 'react-bootstrap/Button';
-import { ApiPoke } from '../../context/PokeApiContext'
+import { Link } from 'react-router-dom';
 
 
 const VolverHome = () => {
 
-    const { setAbilitySearchResult } = useContext(ApiPoke)
-
-
-    const clearAbility = () => {
-        setAbilitySearchResult([])
-        window.history.back()
-    }
 
     return (
 
-        <Button onClick={() => { clearAbility() }}>
-            VOLVER
-        </Button>
+        <Link to={'/'}>
+            <Button>HOME</Button>
+        </Link>
     )
 }
 

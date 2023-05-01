@@ -1,13 +1,14 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import VolverHome from '../../component/VolverHome/VolverHome'
+import VolverBack from '../../component/VolverBack/VolverBack'
 import { ApiPoke } from '../../context/PokeApiContext'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Loading from '../../component/Loading/Loading'
 import Ability from '../../component/Ability/Ability'
 import Generation from '../../component/Generation/Generation'
+import VolverHome from '../../component/VolverHome/VolverHome'
 
 
 const Character = () => {
@@ -46,7 +47,7 @@ const Character = () => {
 
     return (
         <>
-            <VolverHome />
+            <VolverBack />
             {
                 pokemonSelect.length !== 0 && pokemonSelect !== undefined ?
 
