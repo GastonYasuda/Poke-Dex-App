@@ -30,11 +30,19 @@ const PokeApiContext = ({ children }) => {
 
     //--------------------------------------------------------------SEARCH CATEGORY
 
-    // const [generation, setGeneration] = useState([])
+    const [generation, setGeneration] = useState([])
 
-    // const searchByCategory = () => {
-    //     fetch
-    // }
+    const searchByCategory = (url, state) => {
+
+        fetch(url)
+            .then(response => response.json())
+            .then(json => {
+                if (state === "generation") {
+                    setGeneration(json)
+                }
+            })
+
+    }
 
 
 
@@ -100,7 +108,7 @@ const PokeApiContext = ({ children }) => {
 
     return (
 
-        <ApiPoke.Provider value={{ pokemonSelect, specieSearchResult, setAbilitySearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, abilitySearchResult, searchBySubCategory, pokemon, mayPrimera }}>
+        <ApiPoke.Provider value={{ searchByCategory, generation, pokemonSelect, specieSearchResult, setAbilitySearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, abilitySearchResult, searchBySubCategory, pokemon, mayPrimera }}>
 
             {children}
         </ApiPoke.Provider>

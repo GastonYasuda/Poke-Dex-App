@@ -7,59 +7,35 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Loading from '../../component/Loading/Loading'
 import Ability from '../../component/Ability/Ability'
+import Generation from '../../component/Generation/Generation'
 
 
 const Character = () => {
 
     const { characterId } = useParams()
-    const { pokemonSelect, mayPrimera, searchBySubCategory, specieSearchResult } = useContext(ApiPoke)
+    const { pokemonSelect, mayPrimera, searchBySubCategory } = useContext(ApiPoke)
 
     const [imgUrl, setImgUrl] = useState("")
     const [showAbility, setShowAbility] = useState(false)
-    const [generation, setGeneration] = useState([])
 
 
     useEffect(() => {
+        searchBySubCategory("pokemon", characterId, "pokemon")
 
+    }, [])
 
-        if (pokemonSelect.length === 0 || pokemonSelect === undefined) {
-            searchBySubCategory("pokemon", characterId, "pokemon")
-
-
-        } else {
-            searchBySubCategory("pokemon", characterId, "pokemon")
-
+    useEffect(() => {
+        if (pokemonSelect.length !== 0) {
 
             if (pokemonSelect["sprites"].other.dream_world.front_default === null) {
                 setImgUrl(pokemonSelect["sprites"].front_default)
+
             } else {
                 setImgUrl(pokemonSelect["sprites"].other.dream_world.front_default)
+
             }
         }
-
-
-
-
-
-    }, [characterId, pokemonSelect])
-
-    useEffect(() => {
-
-        searchBySubCategory("pokemon-species", characterId, "specie")
-
-        if (specieSearchResult.length === 0 || specieSearchResult === undefined) {
-            // de aca puedo sacar generacion, evolution-chain,habitat
-
-
-        } else if (specieSearchResult.length !== 0 || specieSearchResult !== undefined) {
-            // console.log(specieSearchResult)
-
-            setGeneration(specieSearchResult["generation"])
-        }
-
-
-    }, [pokemonSelect])
-
+    }, [pokemonSelect, characterId])
 
 
     const seeAbility = (queHabilidad) => {
@@ -76,17 +52,10 @@ const Character = () => {
 
                     <Card className='characterCard'>
                         <Card.Header>
+
                             {mayPrimera(pokemonSelect.name)}
-
-                            {
-                                generation.length !== 0 &&
-                                <Link to={`/generation/o`} >
-                                    {(generation.name).toUpperCase()}
-                                </Link>
-
-                            }
-
-
+                            <Generation />
+                            
                         </Card.Header>
 
 
