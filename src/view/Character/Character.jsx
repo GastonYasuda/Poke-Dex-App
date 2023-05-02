@@ -8,13 +8,13 @@ import Card from 'react-bootstrap/Card';
 import Loading from '../../component/Loading/Loading'
 import Ability from '../../component/Ability/Ability'
 import Generation from '../../component/Generation/Generation'
-import VolverHome from '../../component/VolverHome/VolverHome'
+import EvolutionChain from '../../component/EvolutionChain/EvolutionChain'
 
 
 const Character = () => {
 
     const { characterId } = useParams()
-    const { pokemonSelect, mayPrimera, searchBySubCategory } = useContext(ApiPoke)
+    const { pokemonSelect, mayPrimera, searchBySubCategory, specieSearchResult } = useContext(ApiPoke)
 
     const [imgUrl, setImgUrl] = useState("")
     const [showAbility, setShowAbility] = useState(false)
@@ -55,7 +55,7 @@ const Character = () => {
                         <Card.Header>
 
                             {mayPrimera(pokemonSelect.name)}
-                            <Generation characterId={characterId} />
+                            <Generation characterId={characterId} specieSearchResult={specieSearchResult} />
 
                         </Card.Header>
 
@@ -63,10 +63,13 @@ const Character = () => {
                         <Card.Body className='characterCard__body d-flex-col-center'>
                             <Card.Img className='characterCard__body-img' src={imgUrl} alt={pokemonSelect.name} />
 
+                            
+
+                            <EvolutionChain specieSearchResult={specieSearchResult} />
+
                             <Ability showAbility={showAbility} />
 
                         </Card.Body>
-
 
 
                         < Card.Footer className='characterCard__footer'>

@@ -29,6 +29,7 @@ const PokeApiContext = ({ children }) => {
     //--------------------------------------------------------------SEARCH CATEGORY
 
     const [generationSearchResult, setGenerationSearchResult] = useState([]) //name, main_region, pokemon-species 
+    const [evolutionSearchResult, setEvolutionSearchResult] = useState([])
 
     const searchByCategory = (url, state) => {
 
@@ -37,6 +38,8 @@ const PokeApiContext = ({ children }) => {
             .then(json => {
                 if (state === "generationResult") {
                     setGenerationSearchResult(json)
+                } else if (state === "evolution") {
+                    setEvolutionSearchResult(json)
                 }
             })
 
@@ -50,7 +53,6 @@ const PokeApiContext = ({ children }) => {
     const [pokemonByGeneration, setPokemonByGeneration] = useState([])// traigo las imagenes de los poke por generation
     const [abilitySearchResult, setAbilitySearchResult] = useState([])
     const [specieSearchResult, setSpecieSearchResult] = useState([]) // entro a generation, evolution_chain, flavor_text_entries(descripcion)
-
 
 
     const searchBySubCategory = (CategoryId, SubCategory, state) => {
@@ -74,6 +76,7 @@ const PokeApiContext = ({ children }) => {
 
                 } else if (state === "generationPokemon") {
                     setPokemonByGeneration(pokemonByGeneration => [...pokemonByGeneration, json])
+
                 } else if (state === "generationID") {
                     setGenerationSearchResult(json)
                 }
@@ -114,7 +117,7 @@ const PokeApiContext = ({ children }) => {
 
     return (
 
-        <ApiPoke.Provider value={{ pokemonByGeneration, searchByCategory, generationSearchResult, pokemonSelect, specieSearchResult, setAbilitySearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, abilitySearchResult, searchBySubCategory, pokemon, mayPrimera }}>
+        <ApiPoke.Provider value={{ evolutionSearchResult, pokemonByGeneration, searchByCategory, generationSearchResult, pokemonSelect, specieSearchResult, setAbilitySearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, abilitySearchResult, searchBySubCategory, pokemon, mayPrimera }}>
 
             {children}
         </ApiPoke.Provider>

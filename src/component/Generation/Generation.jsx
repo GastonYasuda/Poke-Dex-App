@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext'
 import { Link } from 'react-router-dom'
 
-const Generation = ({ characterId }) => {
+const Generation = ({ characterId, specieSearchResult }) => {
 
-    const { generationSearchResult, searchByCategory, searchBySubCategory, specieSearchResult } = useContext(ApiPoke)
+    const { generationSearchResult, searchByCategory, searchBySubCategory } = useContext(ApiPoke)
 
 
     useEffect(() => {
