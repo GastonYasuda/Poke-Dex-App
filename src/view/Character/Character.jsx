@@ -9,6 +9,7 @@ import Loading from '../../component/Loading/Loading'
 import Ability from '../../component/Ability/Ability'
 import Generation from '../../component/Generation/Generation'
 import EvolutionChain from '../../component/EvolutionChain/EvolutionChain'
+import Description from '../../component/Description/Description'
 
 
 const Character = () => {
@@ -63,7 +64,7 @@ const Character = () => {
                         <Card.Body className='characterCard__body d-flex-col-center'>
                             <Card.Img className='characterCard__body-img' src={imgUrl} alt={pokemonSelect.name} />
 
-                            
+                            <Description specieSearchResult={specieSearchResult} pokemonSelect={pokemonSelect} />
 
                             <EvolutionChain specieSearchResult={specieSearchResult} />
 
