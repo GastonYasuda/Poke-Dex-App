@@ -80,7 +80,7 @@ const Character = () => {
                                     pokemonSelect["abilities"].map((cadaAbility, i) => {
                                         return (
                                             <Button key={i} onClick={() => { seeAbility(cadaAbility.ability.name) }}>
-                                                <p>{cadaAbility.ability.name}</p>
+                                                <p>{mayPrimera(cadaAbility.ability.name)}</p>
                                             </Button >
                                         )
                                     })

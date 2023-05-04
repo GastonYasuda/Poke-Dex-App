@@ -11,26 +11,28 @@ const Description = ({ specieSearchResult, pokemonSelect }) => {
 
 
     useEffect(() => {
-        if (specieSearchResult.length !== 0) {
+        if (specieSearchResult.length !== 0 && habitat !== null) {
             console.log(habitat)
 
             searchByCategory(habitat.url, "habitat")
         }
     }, [specieSearchResult])
 
-    useEffect(() => {
-        console.log(habitatSearchResult);
-    }, [habitatSearchResult])
 
     return (
         <div>
-            <h4>Habitat:</h4>
-            {mayPrimera(habitatSearchResult.name)}
-            
+            {
+                habitatSearchResult.length !== 0 &&
+                <>
+                    <h4>Habitat:</h4>
+                    {mayPrimera(habitatSearchResult.name)}
+                </>
+            }
+
             <h4>Type:</h4>
             {types.map((each, i) => {
                 return (
-                    <p key={i}>{each.type.name}</p>
+                    <p key={i}>{mayPrimera(each.type.name)}</p>
                 )
             })}
 

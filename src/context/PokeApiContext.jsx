@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { json } from 'react-router-dom'
 
 export const ApiPoke = createContext()
 
@@ -29,19 +28,27 @@ const PokeApiContext = ({ children }) => {
     //--------------------------------------------------------------SEARCH CATEGORY
 
     const [generationSearchResult, setGenerationSearchResult] = useState([]) //name, main_region, pokemon-species 
+    const [byGenerationSearchResult, setByGenerationSearchResult] = useState([])
     const [evolutionSearchResult, setEvolutionSearchResult] = useState([])
     const [habitatSearchResult, setHabitatSearchResult] = useState([])
 
 
     const searchByCategory = (url, state) => {
 
+        setGenerationSearchResult([])
+
         fetch(url)
             .then(response => response.json())
             .then(json => {
                 if (state === "generationResult") {
                     setGenerationSearchResult(json)
+
+                } else if (state === "byGeneration") {
+                    setByGenerationSearchResult(json.results)
+
                 } else if (state === "evolution") {
                     setEvolutionSearchResult(json)
+
                 } else if (state === "habitat") {
                     setHabitatSearchResult(json)
                 }
@@ -67,7 +74,6 @@ const PokeApiContext = ({ children }) => {
         fetch(`https://pokeapi.co/api/v2/${CategoryId}/${SubCategory}?limit=400`) //poner limite 400
             .then((response) => response.json())
             .then((json) => {
-                // console.log(json);
 
                 if (state === "pokemon") {
                     setPokemonSelect(json)
@@ -121,7 +127,7 @@ const PokeApiContext = ({ children }) => {
 
     return (
 
-        <ApiPoke.Provider value={{ habitatSearchResult, evolutionSearchResult, pokemonByGeneration, searchByCategory, generationSearchResult, pokemonSelect, specieSearchResult, setAbilitySearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, abilitySearchResult, searchBySubCategory, pokemon, mayPrimera }}>
+        <ApiPoke.Provider value={{ byGenerationSearchResult, habitatSearchResult, evolutionSearchResult, pokemonByGeneration, searchByCategory, generationSearchResult, pokemonSelect, specieSearchResult, setAbilitySearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, abilitySearchResult, searchBySubCategory, pokemon, mayPrimera }}>
 
             {children}
         </ApiPoke.Provider>

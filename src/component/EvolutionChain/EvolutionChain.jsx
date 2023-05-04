@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext'
 
 const EvolutionChain = ({ specieSearchResult }) => {
@@ -15,28 +15,32 @@ const EvolutionChain = ({ specieSearchResult }) => {
 
     }, [specieSearchResult])
 
+    const [evolutionStage, setEvolutionStage] = useState("");
+
     useEffect(() => {
+
         if (evolutionSearchResult.length !== 0) {
-            console.log(evolutionSearchResult);
 
-            console.log(evolutionSearchResult.chain.evolves_to.length); //1
+            if (evolutionSearchResult.chain.evolves_to.length !== 0) {
 
-            // console.log(evolutionSearchResult.chain.species.name);
-            // console.log(evolutionSearchResult.chain.evolves_to[0].species.name);
-            // console.log(evolutionSearchResult.chain.evolves_to[0].evolves_to[0].species.name);
+                let tempEvolutionStage = [evolutionSearchResult.chain.species.name]
+                let currentChain = evolutionSearchResult.chain.evolves_to
 
-
-            //por cada pokemon...
-            //mostrame species.name
-            //despues
-            //hacelo MIENTRAS tenga evolves_to no este vacio MOSTRAME species.name
-
-
+                while (currentChain.length !== 0) {
+                    currentChain.forEach(evolution => {
+                        tempEvolutionStage.push(evolution.species.name)
+                    });
+                    currentChain = currentChain[0].evolves_to
+                }
+                setEvolutionStage(tempEvolutionStage)
+            }
         }
+
     }, [evolutionSearchResult])
 
     return (
         <div>
+            {console.log(evolutionStage)}
             ACA IRIA LA CADENA DE EVOLUCION
         </div>
     )

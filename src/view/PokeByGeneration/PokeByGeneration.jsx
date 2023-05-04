@@ -6,51 +6,24 @@ import VolverHome from '../../component/VolverHome/VolverHome'
 
 const PokeByGeneration = () => {
 
-    const { generationSearchResult, pokemonByGeneration, searchBySubCategory } = useContext(ApiPoke)
+    const { generationSearchResult, pokemonByGeneration, searchBySubCategory, mayPrimera } = useContext(ApiPoke)
     const { generationId } = useParams()
 
     useEffect(() => {
         if (generationSearchResult.length === 0) {
-            searchBySubCategory("generation", generationId, "generationID")
+            searchBySubCategory("generation", generationId, "generationID")//generationSearchResult
         }
 
-        const { pokemon_species } = generationSearchResult
-        for (const key in pokemon_species) {
-            searchBySubCategory("pokemon", pokemon_species[key].name, "generationPokemon") //pokemonByGeneration
-        }
+        if (generationSearchResult.length !== 0) {
+            const { pokemon_species } = generationSearchResult
 
+            for (const key in pokemon_species) {
+                console.log(pokemon_species[key]);
+                searchBySubCategory("pokemon", pokemon_species[key].name, "generationPokemon") //pokemonByGeneration
+            }
+        }
 
     }, [generationSearchResult])
-
-    // useEffect(() => {
-
-    //     if (generationSearchResult.length !== 0 && generationSearchResult !== undefined) {
-    //         console.log(generationSearchResult)
-
-
-    //         for (const key in pokemon_species) {
-    //             searchBySubCategory("pokemon", pokemon_species[key].name, "generationPokemon") //pokemonByGeneration
-    //         }
-    //     } else {
-    //         console.log("no estoy");
-    //     }
-
-    // }, [generationSearchResult])
-
-    //--------------------------------PARA PROBAR
-    // useEffect(() => {
-    //     if (pokemonByGeneration.length !== 0) {
-    //         console.log(pokemonByGeneration);
-
-    //         for (const key in pokemonByGeneration) {
-    //             console.log(pokemonByGeneration[key].sprites);
-    //         }
-
-    //     }
-
-    // }, [pokemonByGeneration])
-
-
 
     return (
         <>
@@ -60,7 +33,7 @@ const PokeByGeneration = () => {
                     ?
                     < div >
                         <h1>{(generationSearchResult.name).toUpperCase()}</h1>
-                        <p>main region: {generationSearchResult.main_region.name}</p>
+                        <p>Main region: {mayPrimera(generationSearchResult.main_region.name)}</p>
                         {
                             pokemonByGeneration.map((poke, i) => {
                                 return (
