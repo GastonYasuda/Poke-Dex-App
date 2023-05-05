@@ -3,6 +3,9 @@ import { ApiPoke } from '../../context/PokeApiContext'
 import Loading from '../../component/Loading/Loading'
 import { Link, useParams } from 'react-router-dom'
 import VolverHome from '../../component/VolverHome/VolverHome'
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const PokeByGeneration = () => {
 
@@ -28,23 +31,44 @@ const PokeByGeneration = () => {
     return (
         <>
             <VolverHome />
+
+
             {
                 generationSearchResult.length !== 0
                     ?
-                    < div >
-                        <h1>{(generationSearchResult.name).toUpperCase()}</h1>
-                        <p>Main region: {mayPrimera(generationSearchResult.main_region.name)}</p>
-                        {
-                            pokemonByGeneration.map((poke, i) => {
-                                return (
-                                    <Link to={`/character/${poke.name}`} key={i}>
-                                        <p>{poke.name}</p>
-                                        <img src={poke.sprites.front_default} alt="" />
-                                    </Link>
-                                )
-                            })
-                        }
-                    </div >
+                    <section className='itemList'>
+                        <Row xs={1} sm={2} md={4} lg={5} className="g-4 ">
+                            <h1>{(generationSearchResult.name).toUpperCase()}</h1>
+                            <p>Main region: {mayPrimera(generationSearchResult.main_region.name)}</p>
+
+                            {
+                                pokemonByGeneration.map((poke, i) => {
+                                    return (
+                                        <Link to={`/character/${poke.name}`} key={i}>
+
+                                            <Card className='card'>
+                                                <Card.Header>
+                                                    <Card.Title className='card__title'>{mayPrimera(poke.name)}</Card.Title>
+                                                </Card.Header>
+
+                                                <Card.Body>
+                                                    {
+                                                        poke["sprites"].other.dream_world.front_default !== null ?
+                                                            <Card.Img className='cardImg' src={poke["sprites"].other.dream_world.front_default} alt={poke.name} />
+                                                            :
+                                                            <Card.Img className='cardImg' src={poke["sprites"].front_default} alt={poke.name} />
+                                                    }
+                                                </Card.Body>
+                                            </Card>
+
+
+                                        </Link>
+                                    )
+                                })
+                            }
+
+                        </Row>
+                    </section>
                     :
                     <Loading />
             }
