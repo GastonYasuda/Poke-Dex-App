@@ -11,33 +11,33 @@ const ItemList = ({ pokemon }) => {
     const { mayPrimera } = useContext(ApiPoke)
 
     return (
+        <section className='itemList'>
+            <Row xs={1} sm={2} md={4} lg={5} className="g-4 ">
 
-        <Row xs={1} sm={2} md={4} lg={5} className="g-4">
+                {
+                    pokemon.map((unPokemon, i) => (
+                        <Link to={`/character/${unPokemon.name}`} key={i}>
 
-            {
-                pokemon.map((unPokemon, i) => (
-                    <Link to={`/character/${unPokemon.name}`} key={i}>
+                            <Col>
+                                <Card className='card'>
+                                    <Card.Header>
+                                        <Card.Title className='card__title'>{mayPrimera(unPokemon.name)}</Card.Title>
+                                    </Card.Header>
 
-                        <Col>
-                            <Card className='card'>
-                                <Card.Header>
-                                    <Card.Title>{mayPrimera(unPokemon.name)}</Card.Title>
-                                    <Card.Text>Id: {unPokemon.id}</Card.Text>
-                                </Card.Header>
-
-                                <Card.Body>
-                                    {
-                                        unPokemon["sprites"].other.dream_world.front_default !== null ?
-                                            <Card.Img className='cardImg' src={unPokemon["sprites"].other.dream_world.front_default} alt={unPokemon.name} />
-                                            :
-                                            <Card.Img className='cardImg' src={unPokemon["sprites"].front_default} alt={unPokemon.name} />
-                                    }
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Link>
-                ))}
-        </Row>
+                                    <Card.Body>
+                                        {
+                                            unPokemon["sprites"].other.dream_world.front_default !== null ?
+                                                <Card.Img className='cardImg' src={unPokemon["sprites"].other.dream_world.front_default} alt={unPokemon.name} />
+                                                :
+                                                <Card.Img className='cardImg' src={unPokemon["sprites"].front_default} alt={unPokemon.name} />
+                                        }
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Link>
+                    ))}
+            </Row>
+        </section>
     )
 }
 

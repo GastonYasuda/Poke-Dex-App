@@ -13,14 +13,14 @@ const Generation = ({ characterId, specieSearchResult }) => {
 
 
     useEffect(() => {
-        if (specieSearchResult.length !== 0  ) {
+        if (specieSearchResult.length !== 0) {
             searchByCategory(specieSearchResult.generation.url, "generationResult") //resultado es generationSearchResult
         }
     }, [specieSearchResult])
 
 
     return (
-        <>
+        <section className='generationName'>
             {
                 generationSearchResult.length !== 0 &&
 
@@ -32,7 +32,7 @@ const Generation = ({ characterId, specieSearchResult }) => {
 
 
             }
-        </>
+        </section>
     )
 }
 

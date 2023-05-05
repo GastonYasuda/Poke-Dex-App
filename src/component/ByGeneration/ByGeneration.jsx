@@ -11,17 +11,17 @@ const ByGeneration = () => {
     }, [])
 
     return (
-        <>
+        <section className='generationLinkContainer d-flex-row-center'>
             {
                 byGenerationSearchResult.map((eachGene, i) => {
                     return (
-                        <Link to={`/generation/${eachGene.name}`} key={i}>
-                            {eachGene.name}
+                        <Link to={`/generation/${eachGene.name}`} key={i} className='generationLinkContainer__link'>
+                            {(eachGene.name).toUpperCase()}
                         </Link>
                     )
                 })
             }
-        </>
+        </section>
     )
 }
 

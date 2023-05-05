@@ -1,11 +1,12 @@
 import React from 'react'
-import './ToTop.css'
+import upArrow from "../../assets/upArrow.png"
+
 
 const ToTop = () => {
     return (
-        <button className="flechaVolverArriba">
+        <button className="upArrow">
             <a href="#top">
-                <img src="/assets/subir.svg" alt="flecha subir" />
+                <img src={upArrow} alt="flecha subir" />
             </a>
         </button>
     )

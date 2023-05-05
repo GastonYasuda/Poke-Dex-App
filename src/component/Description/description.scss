@@ -1,0 +1,16 @@
+.descriptionItem {
+    align-items: center;
+
+    &-title {
+        font-weight: 600;
+    }
+
+    &-item {
+        margin: 5px;
+
+        span {
+            margin-right: 4px;
+        }
+    }
+
+}

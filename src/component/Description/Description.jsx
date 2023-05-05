@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext'
+import Button from 'react-bootstrap/esm/Button'
 
 const Description = ({ specieSearchResult, pokemonSelect }) => {
 
@@ -23,21 +24,36 @@ const Description = ({ specieSearchResult, pokemonSelect }) => {
         <div>
             {
                 habitatSearchResult.length !== 0 &&
-                <>
-                    <h4>Habitat:</h4>
-                    {mayPrimera(habitatSearchResult.name)}
-                </>
+                <div className='descriptionItem d-flex-row'>
+                    <span className='descriptionItem-title'>Habitat:</span>
+                    <span className='descriptionItem-item'>
+                        <Button className='buttonStyle'>
+                            {mayPrimera(habitatSearchResult.name)}
+                        </Button>
+                    </span>
+                </div>
             }
+            <div className='descriptionItem d-flex-row'>
+                <span className='descriptionItem-title'>Type:</span>
+                <span className='descriptionItem-item d-flex-row'>
+                    {
+                        types.map((each, i) => {
+                            return (
+                                <Button key={i} className='buttonStyle'>{mayPrimera(each.type.name)}</Button>
+                            )
+                        })
+                    }
+                </span>
+            </div>
+            <div className='descriptionItem d-flex-row'>
+                <span className='descriptionItem-title'>Heigth:</span>
+                <span className='descriptionItem-item'>{height * 10} cm.</span>
+            </div>
+            <div className='descriptionItem d-flex-row'>
+                <span className='descriptionItem-title'>Weigth:</span>
+                <span className='descriptionItem-item'>{weight / 10} kg.</span>
+            </div>
 
-            <h4>Type:</h4>
-            {types.map((each, i) => {
-                return (
-                    <p key={i}>{mayPrimera(each.type.name)}</p>
-                )
-            })}
-
-            <h4>Heigth: {height} cm.</h4>
-            <h4>Weigth: {weight / 10} kg.</h4>
         </div>
     )
 }

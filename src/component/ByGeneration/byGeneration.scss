@@ -1,0 +1,17 @@
+@use '../../styles/colorVariable';
+
+.generationLinkContainer {
+    width: 100%;
+    margin: 20px;
+    overflow-y: hidden;
+
+    &__link {
+        margin: 0 15px;
+        text-decoration: none;
+        color: colorVariable.$principalColor ;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

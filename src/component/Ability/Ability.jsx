@@ -20,18 +20,27 @@ const Ability = ({ showAbility }) => {
     }, [abilitySearchResult, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt])
 
     return (
-        <>
+        <div className='d-flex-col-center showAbilityStyle m-top'>
             {
                 showAbility ?
                     <>
-                        <Card.Text> Ability: {abilityInfoNameTxt}</Card.Text >
-                        <Card.Text>{abilityInfoFlavorTxt}</Card.Text>
+                        <Card.Text>
+                            <span className='descriptionItem-title'>Ability:</span>
+                            <span className='descriptionItem-item'>{abilityInfoNameTxt}</span>
+                        </Card.Text >
+
+                        <Card.Text>
+                            <span className='descriptionItem-title'>
+                                {abilityInfoFlavorTxt}
+                            </span>
+                        </Card.Text>
+
                         <Card.Text>{abilityInfoEffectTxt}</Card.Text>
                     </>
                     :
                     null
             }
-        </>
+        </div>
     )
 }
 

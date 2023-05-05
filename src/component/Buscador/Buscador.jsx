@@ -22,7 +22,7 @@ const Buscador = ({ inputCharacter, setInputCharacter }) => {
 
             <InputGroup className="mb-3" >
                 <Form.Control
-                    placeholder="Search by Name or Id"
+                    placeholder="Search Pokemon by Name or Id"
                     onChange={handleChange}
                 />
                 <Button variant="outline-secondary" id="button-addon2" >

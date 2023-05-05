@@ -1,13 +1,20 @@
+@use '../styles/colorVariable';
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-.main {
+.main__body {
     width: 80%;
-    margin: 0 auto;
     font-family: 'Mulish', sans-serif;
+}
+
+//--------------------------DISPLAY FLEX column
+.d-flex-col {
+    display: flex;
+    flex-direction: column;
 }
 
 .d-flex-col-center {
@@ -15,6 +22,8 @@
     flex-direction: column;
     align-items: center;
 }
+
+//--------------------------DISPLAY FLEX row
 
 .d-flex-row {
     display: flex;
@@ -28,11 +37,42 @@
 }
 
 .card {
+    &__title {
+        color: colorVariable.$principalColor ;
+    }
+
     min-height: 250px;
+    transition: filter 0.7s;
+
+    &:hover {
+        filter: drop-shadow(0px 0px 22px rgba(0, 0, 0, 0.3));
+
+    }
 
     .cardImg {
         max-height: 120px;
+        transition: transform 0.5s;
+
+        &:hover {
+            transform: scale(1.2)
+        }
+
     }
 }
 
+.buttonStyle {
+    margin: 0 8px
+}
+
+.m-top {
+    margin-top: 55px
+}
+
+@import "../view/ItemListContainer/ItemListContainer.scss";
+@import "../component/ByGeneration/byGeneration.scss";
 @import "../view/Character/characterCard.scss";
+@import "../component/itemList/itemList.scss";
+@import "../component/ToTop/toTop.scss";
+@import "../component/VolverBack/volverBack.scss";
+@import "../component/Description/description.scss";
+@import "../component/Ability/ability.scss";
