@@ -6,11 +6,15 @@ import ItemListContainer from './view/ItemListContainer/ItemListContainer';
 import PokeByGeneration from './view/PokeByGeneration/PokeByGeneration';
 import PokeByHabitat from './view/PokeByHabitat/PokeByHabitat';
 import PokeByType from './view/PokeByType/PokeByType';
+import MainHeader from './component/MainHeader/MainHeader';
+import ToTop from './component/ToTop/ToTop';
 
 function App() {
   return (
     <PokeApiContext>
       <BrowserRouter>
+
+        <MainHeader />
 
         <Routes>
           <Route path='/' element={<ItemListContainer />} />
@@ -21,6 +25,8 @@ function App() {
 
 
         </Routes>
+
+        <ToTop />
 
       </BrowserRouter>
     </PokeApiContext>

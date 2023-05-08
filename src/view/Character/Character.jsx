@@ -10,6 +10,7 @@ import Ability from '../../component/Ability/Ability'
 import Generation from '../../component/Generation/Generation'
 import EvolutionChain from '../../component/EvolutionChain/EvolutionChain'
 import Description from '../../component/Description/Description'
+import VolverHome from '../../component/VolverHome/VolverHome'
 
 
 const Character = () => {
@@ -49,6 +50,7 @@ const Character = () => {
     return (
         <>
             <VolverBack />
+            <VolverHome />
             {
                 pokemonSelect.length !== 0 && pokemonSelect !== undefined ?
 

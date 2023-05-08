@@ -30,10 +30,10 @@ const PokeByType = () => {
 
             const { pokemon } = typeSearchResult
 
-            console.log(pokemon)//hasta aca todo bien
+            // console.log(pokemon)//hasta aca todo bien
 
             for (const key in pokemon) {
-                console.log(pokemon[key].pokemon.name)//hasta aca bien
+                // console.log(pokemon[key].pokemon.name)//hasta aca bien
 
                 searchBySubCategory("pokemon", pokemon[key].pokemon.name, "typePokemon")//pokemonByType
             }
@@ -50,7 +50,7 @@ const PokeByType = () => {
                 pokemonByType.length !== 0 ?
                     <section className='itemList'>
                         <Row xs={1} sm={2} md={4} lg={5} className="g-4 ">
-                            <h1>{typeSearchResult.name}</h1>
+                            <h1>{(typeId).toUpperCase()}</h1>
 
                             {
                                 pokemonByType.map((poke, i) => {
