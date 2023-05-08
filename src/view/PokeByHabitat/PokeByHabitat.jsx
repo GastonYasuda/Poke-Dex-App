@@ -1,45 +1,45 @@
-import React, { Fragment, useContext, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext'
-import Loading from '../../component/Loading/Loading'
 import { Link, useParams } from 'react-router-dom'
 import VolverHome from '../../component/VolverHome/VolverHome'
+import Loading from '../../component/Loading/Loading'
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
+import VolverBack from '../../component/VolverBack/VolverBack'
 
-const PokeByGeneration = () => {
+const PokeByHabitat = () => {
 
-    const { generationSearchResult, pokemonByGeneration, searchBySubCategory, mayPrimera } = useContext(ApiPoke)
-    const { generationId } = useParams()
+    const { searchBySubCategory, pokemonByHabitat, habitatDetail, mayPrimera } = useContext(ApiPoke)
+
+    const { habitatId } = useParams()
 
     useEffect(() => {
-        if (generationSearchResult.length === 0) {
-            searchBySubCategory("generation", generationId, "generationID")//generationSearchResult
-        }
 
-        if (generationSearchResult.length !== 0) {
-            const { pokemon_species } = generationSearchResult
+        if (habitatDetail.length === 0) {
+            searchBySubCategory("pokemon-habitat", habitatId, "habitatDetail") //habitatDetail
+
+        } else {
+            const { pokemon_species } = habitatDetail
 
             for (const key in pokemon_species) {
-                searchBySubCategory("pokemon", pokemon_species[key].name, "generationPokemon") //pokemonByGeneration
+                searchBySubCategory("pokemon", pokemon_species[key].name, "habitatPokemon") //pokemonByHabitat
             }
         }
+    }, [habitatDetail])
 
-    }, [generationSearchResult])
 
     return (
         <>
+            <VolverBack />
             <VolverHome />
-
             {
-                generationSearchResult.length !== 0
-                    ?
+                pokemonByHabitat.length !== 0 ?
                     <section className='itemList'>
                         <Row xs={1} sm={2} md={4} lg={5} className="g-4 ">
-                            <h1>{(generationSearchResult.name).toUpperCase()}</h1>
-                            <p>Main region: {mayPrimera(generationSearchResult.main_region.name)}</p>
+                            <h1>{(habitatDetail.name).toUpperCase()}</h1>
 
                             {
-                                pokemonByGeneration.map((poke, i) => {
+                                pokemonByHabitat.map((poke, i) => {
                                     return (
                                         <Link to={`/character/${poke.name}`} key={i}>
 
@@ -47,10 +47,9 @@ const PokeByGeneration = () => {
                                                 <Card.Header>
                                                     <Card.Title className='card__title'>{mayPrimera(poke.name)}</Card.Title>
                                                 </Card.Header>
-                                                {console.log(poke)}
+
                                                 <Card.Body>
                                                     {
-
                                                         poke["sprites"].other.dream_world.front_default !== null ?
                                                             <Card.Img className='cardImg' src={poke["sprites"].other.dream_world.front_default} alt={poke.name} />
                                                             :
@@ -69,9 +68,10 @@ const PokeByGeneration = () => {
                     </section>
                     :
                     <Loading />
+
             }
         </>
     )
 }
 
-export default PokeByGeneration
+export default PokeByHabitat

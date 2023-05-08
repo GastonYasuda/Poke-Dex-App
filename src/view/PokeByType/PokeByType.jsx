@@ -1,45 +1,59 @@
-import React, { Fragment, useContext, useEffect } from 'react'
-import { ApiPoke } from '../../context/PokeApiContext'
-import Loading from '../../component/Loading/Loading'
+import React, { useContext, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { ApiPoke } from '../../context/PokeApiContext'
+import VolverBack from '../../component/VolverBack/VolverBack'
 import VolverHome from '../../component/VolverHome/VolverHome'
+import Loading from '../../component/Loading/Loading'
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 
-const PokeByGeneration = () => {
+const PokeByType = () => {
 
-    const { generationSearchResult, pokemonByGeneration, searchBySubCategory, mayPrimera } = useContext(ApiPoke)
-    const { generationId } = useParams()
+    const { typeSearchResult, searchBySubCategory, pokemonByType, mayPrimera } = useContext(ApiPoke)
+    const { typeId } = useParams()
 
     useEffect(() => {
-        if (generationSearchResult.length === 0) {
-            searchBySubCategory("generation", generationId, "generationID")//generationSearchResult
+
+        if (typeSearchResult.length === 0) {
+            console.log("NUEVA BUSQUEDA DE TYPE");
+            console.log(typeId);
+            searchBySubCategory("type", typeId, "type") // typeSearchResult
+
         }
 
-        if (generationSearchResult.length !== 0) {
-            const { pokemon_species } = generationSearchResult
 
-            for (const key in pokemon_species) {
-                searchBySubCategory("pokemon", pokemon_species[key].name, "generationPokemon") //pokemonByGeneration
+    }, [])
+
+    useEffect(() => {
+        if (typeSearchResult.length !== 0) {
+            console.log(typeSearchResult)
+
+            const { pokemon } = typeSearchResult
+
+            console.log(pokemon)//hasta aca todo bien
+
+            for (const key in pokemon) {
+                console.log(pokemon[key].pokemon.name)//hasta aca bien
+
+                searchBySubCategory("pokemon", pokemon[key].pokemon.name, "typePokemon")//pokemonByType
             }
         }
-
-    }, [generationSearchResult])
+    }, [typeSearchResult])
 
     return (
         <>
+            <VolverBack />
             <VolverHome />
 
             {
-                generationSearchResult.length !== 0
-                    ?
+
+                pokemonByType.length !== 0 ?
                     <section className='itemList'>
                         <Row xs={1} sm={2} md={4} lg={5} className="g-4 ">
-                            <h1>{(generationSearchResult.name).toUpperCase()}</h1>
-                            <p>Main region: {mayPrimera(generationSearchResult.main_region.name)}</p>
+                            <h1>{typeSearchResult.name}</h1>
 
                             {
-                                pokemonByGeneration.map((poke, i) => {
+                                pokemonByType.map((poke, i) => {
                                     return (
                                         <Link to={`/character/${poke.name}`} key={i}>
 
@@ -47,10 +61,9 @@ const PokeByGeneration = () => {
                                                 <Card.Header>
                                                     <Card.Title className='card__title'>{mayPrimera(poke.name)}</Card.Title>
                                                 </Card.Header>
-                                                {console.log(poke)}
+
                                                 <Card.Body>
                                                     {
-
                                                         poke["sprites"].other.dream_world.front_default !== null ?
                                                             <Card.Img className='cardImg' src={poke["sprites"].other.dream_world.front_default} alt={poke.name} />
                                                             :
@@ -69,9 +82,10 @@ const PokeByGeneration = () => {
                     </section>
                     :
                     <Loading />
+
             }
         </>
     )
 }
 
-export default PokeByGeneration
+export default PokeByType

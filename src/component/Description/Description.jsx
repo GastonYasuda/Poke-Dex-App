@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext'
 import Button from 'react-bootstrap/esm/Button'
+import { Link } from 'react-router-dom'
 
 const Description = ({ specieSearchResult, pokemonSelect }) => {
 
-    const { searchByCategory, habitatSearchResult, mayPrimera } = useContext(ApiPoke)
+    const { searchByCategory, habitatDetail, mayPrimera } = useContext(ApiPoke)
 
     const { height, weight, types } = pokemonSelect
     const { habitat } = specieSearchResult
@@ -13,23 +14,25 @@ const Description = ({ specieSearchResult, pokemonSelect }) => {
 
     useEffect(() => {
         if (specieSearchResult.length !== 0 && habitat !== null) {
-            console.log(habitat)
 
-            searchByCategory(habitat.url, "habitat")
+            searchByCategory(habitat.url, "habitat") // habitatDetail
         }
+
     }, [specieSearchResult])
 
 
     return (
         <div>
             {
-                habitatSearchResult.length !== 0 &&
+                habitatDetail.length !== 0 &&
                 <div className='descriptionItem d-flex-row'>
                     <span className='descriptionItem-title'>Habitat:</span>
                     <span className='descriptionItem-item'>
-                        <Button className='buttonStyle'>
-                            {mayPrimera(habitatSearchResult.name)}
-                        </Button>
+                        <Link to={`/habitat/${habitatDetail.name}`}>
+                            <Button className='buttonStyle'>
+                                {mayPrimera(habitatDetail.name)}
+                            </Button>
+                        </Link>
                     </span>
                 </div>
             }
@@ -39,7 +42,9 @@ const Description = ({ specieSearchResult, pokemonSelect }) => {
                     {
                         types.map((each, i) => {
                             return (
-                                <Button key={i} className='buttonStyle'>{mayPrimera(each.type.name)}</Button>
+                                <Link to={`/type/${each.type.name}`} key={i} >
+                                    <Button className='buttonStyle'>{mayPrimera(each.type.name)}</Button>
+                                </Link>
                             )
                         })
                     }
@@ -54,7 +59,7 @@ const Description = ({ specieSearchResult, pokemonSelect }) => {
                 <span className='descriptionItem-item'>{weight / 10} kg.</span>
             </div>
 
-        </div>
+        </div >
     )
 }
 

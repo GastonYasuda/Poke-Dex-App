@@ -30,12 +30,13 @@ const PokeApiContext = ({ children }) => {
     const [generationSearchResult, setGenerationSearchResult] = useState([]) //name, main_region, pokemon-species 
     const [byGenerationSearchResult, setByGenerationSearchResult] = useState([])
     const [evolutionSearchResult, setEvolutionSearchResult] = useState([])
-    const [habitatSearchResult, setHabitatSearchResult] = useState([])
+    const [habitatDetail, setHabitatDetail] = useState([])
 
 
     const searchByCategory = (url, state) => {
 
         setGenerationSearchResult([])
+        setHabitatDetail([])
 
         fetch(url)
             .then(response => response.json())
@@ -50,10 +51,10 @@ const PokeApiContext = ({ children }) => {
                     setEvolutionSearchResult(json)
 
                 } else if (state === "habitat") {
-                    setHabitatSearchResult(json)
+                    setHabitatDetail(json)
+
                 }
             })
-
     }
 
 
@@ -64,12 +65,17 @@ const PokeApiContext = ({ children }) => {
     const [pokemonByGeneration, setPokemonByGeneration] = useState([])// traigo las imagenes de los poke por generation
     const [abilitySearchResult, setAbilitySearchResult] = useState([])
     const [specieSearchResult, setSpecieSearchResult] = useState([]) // entro a generation, evolution_chain, flavor_text_entries(descripcion)
-
+    const [pokemonByHabitat, setPokemonByHabitat] = useState([])
+    const [typeSearchResult, setTypeSearchResult] = useState([])
+    const [pokemonByType, setPokemonByType] = useState([])
 
     const searchBySubCategory = (CategoryId, SubCategory, state) => {
 
         setAbilitySearchResult([])
         setPokemonByGeneration([])
+        setPokemonByHabitat([])
+        setTypeSearchResult([])
+        setPokemonByType([])
 
         fetch(`https://pokeapi.co/api/v2/${CategoryId}/${SubCategory}?limit=400`) //poner limite 400
             .then((response) => response.json())
@@ -89,6 +95,18 @@ const PokeApiContext = ({ children }) => {
 
                 } else if (state === "generationID") {
                     setGenerationSearchResult(json)
+
+                } else if (state === "habitatDetail") {
+                    setHabitatDetail(json)
+                }
+                else if (state === "habitatPokemon") {
+                    setPokemonByHabitat(pokemonByHabitat => [...pokemonByHabitat, json])
+
+                } else if (state === "type") {
+                    setTypeSearchResult(json)
+
+                } else if (state === "typePokemon") {
+                    setPokemonByType(pokemonByType => [...pokemonByType, json])
                 }
             })
     }
@@ -127,7 +145,7 @@ const PokeApiContext = ({ children }) => {
 
     return (
 
-        <ApiPoke.Provider value={{ byGenerationSearchResult, habitatSearchResult, evolutionSearchResult, pokemonByGeneration, searchByCategory, generationSearchResult, pokemonSelect, specieSearchResult, setAbilitySearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, abilitySearchResult, searchBySubCategory, pokemon, mayPrimera }}>
+        <ApiPoke.Provider value={{ pokemonByType, typeSearchResult, habitatDetail, byGenerationSearchResult, pokemonByHabitat, evolutionSearchResult, pokemonByGeneration, searchByCategory, generationSearchResult, pokemonSelect, specieSearchResult, setAbilitySearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, abilitySearchResult, searchBySubCategory, pokemon, mayPrimera }}>
 
             {children}
         </ApiPoke.Provider>

@@ -3,6 +3,21 @@
 
     a {
         text-decoration: none;
+
+        .card {
+
+
+
+            &__title {
+                font-size: 11pt;
+            }
+
+            &__body {
+                justify-content: center;
+            }
+        }
+
+
     }
 
 }

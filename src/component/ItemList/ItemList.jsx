@@ -12,7 +12,7 @@ const ItemList = ({ pokemon }) => {
 
     return (
         <section className='itemList'>
-            <Row xs={1} sm={2} md={4} lg={5} className="g-4 ">
+            <Row xs={1} sm={2} md={3} lg={5} className="g-4 ">
 
                 {
                     pokemon.map((unPokemon, i) => (
@@ -21,10 +21,10 @@ const ItemList = ({ pokemon }) => {
                             <Col>
                                 <Card className='card'>
                                     <Card.Header>
-                                        <Card.Title className='card__title'>{mayPrimera(unPokemon.name)}</Card.Title>
+                                        <span className='card__title'>{mayPrimera(unPokemon.name)}</span>
                                     </Card.Header>
 
-                                    <Card.Body>
+                                    <Card.Body className='d-flex-col card__body'>
                                         {
                                             unPokemon["sprites"].other.dream_world.front_default !== null ?
                                                 <Card.Img className='cardImg' src={unPokemon["sprites"].other.dream_world.front_default} alt={unPokemon.name} />
