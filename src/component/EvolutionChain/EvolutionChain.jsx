@@ -1,49 +1,52 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext'
 
-const EvolutionChain = ({ specieSearchResult }) => {
+const EvolutionChain = ({ evolutionStage }) => {
 
-    const { searchByCategory, evolutionSearchResult } = useContext(ApiPoke)
+    const { searchBySubCategory, evolutionPokemonResult } = useContext(ApiPoke)
 
-    useEffect(() => {
-        if (specieSearchResult.length !== 0) {
-
-            const { evolution_chain } = specieSearchResult
-            console.log(evolution_chain.url) //me trae un url
-            searchByCategory(evolution_chain.url, "evolution")// me trae evolutionSearchResult
-        }
-
-    }, [specieSearchResult])
-
-    const [evolutionStage, setEvolutionStage] = useState("");
 
     useEffect(() => {
 
-        if (evolutionSearchResult.length !== 0) {
+        if (evolutionStage.length !== 0) {
 
-            if (evolutionSearchResult.chain.evolves_to.length !== 0) {
+            // console.log(evolutionStage) // me trae los nombres de la cadena de evoluciones
+            for (const key in evolutionStage) {
 
-                let tempEvolutionStage = [evolutionSearchResult.chain.species.name]
-                let currentChain = evolutionSearchResult.chain.evolves_to
-
-                while (currentChain.length !== 0) {
-                    currentChain.forEach(evolution => {
-                        tempEvolutionStage.push(evolution.species.name)
-                    });
-                    currentChain = currentChain[0].evolves_to
-                }
-                setEvolutionStage(tempEvolutionStage)
+                searchBySubCategory("pokemon", evolutionStage[key], "evolutionPokemon") //evolutionPokemonResult
             }
         }
-
-    }, [evolutionSearchResult])
+    }, [evolutionStage])
 
     return (
-        <div>
-            {console.log(evolutionStage)}
-            ACA IRIA LA CADENA DE EVOLUCION
+        <div className='evolutionChain d-flex-col'>
+            <span>Evolution Chain</span>
+
+            <div className='evolutionChain__container d-flex-row-align-center'>
+                {
+                    evolutionPokemonResult.map((evolution, i) => {
+                        return (
+                            <div key={i} className='evolutionChain__container-content'>
+                                <div className='d-flex-col-center'>
+                                    {
+                                        evolution["sprites"].other.dream_world.front_default === null ?
+                                            <img src={evolution["sprites"].front_default} alt={evolution.name} />
+                                            :
+                                            <img src={evolution["sprites"].other.dream_world.front_default} alt={evolution.name} />
+
+                                    }
+                                    <span className='evolutionChain__container-name'>{(evolution.name).toUpperCase()}</span>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+
+            </div>
         </div>
+
     )
 }
 
 export default EvolutionChain
+

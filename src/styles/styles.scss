@@ -36,6 +36,12 @@
     justify-content: center;
 }
 
+.d-flex-row-align-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .card {
     &__title {
         color: colorVariable.$principalColor ;
@@ -76,3 +82,4 @@
 @import "../component/VolverBack/volverBack.scss";
 @import "../component/Description/description.scss";
 @import "../component/Ability/ability.scss";
+@import "../component/EvolutionChain/evolutionChain.scss";

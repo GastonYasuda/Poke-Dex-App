@@ -17,6 +17,7 @@ function App() {
         <MainHeader />
 
         <Routes>
+
           <Route path='/' element={<ItemListContainer />} />
           <Route path='/character/:characterId' element={<Character />} />
           <Route path='/generation/:generationId' element={<PokeByGeneration />} />

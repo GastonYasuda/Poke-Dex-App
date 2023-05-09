@@ -32,7 +32,6 @@ const PokeApiContext = ({ children }) => {
     const [evolutionSearchResult, setEvolutionSearchResult] = useState([])
     const [habitatDetail, setHabitatDetail] = useState([])
 
-
     const searchByCategory = (url, state) => {
 
         setGenerationSearchResult([])
@@ -68,6 +67,8 @@ const PokeApiContext = ({ children }) => {
     const [pokemonByHabitat, setPokemonByHabitat] = useState([])
     const [typeSearchResult, setTypeSearchResult] = useState([])
     const [pokemonByType, setPokemonByType] = useState([])
+    const [evolutionPokemonResult, setEvolutionPokemonResult] = useState([])
+
 
     const searchBySubCategory = (CategoryId, SubCategory, state) => {
 
@@ -76,6 +77,7 @@ const PokeApiContext = ({ children }) => {
         setPokemonByHabitat([])
         setTypeSearchResult([])
         setPokemonByType([])
+        setEvolutionPokemonResult([])
 
         fetch(`https://pokeapi.co/api/v2/${CategoryId}/${SubCategory}?limit=400`) //poner limite 400
             .then((response) => response.json())
@@ -107,6 +109,9 @@ const PokeApiContext = ({ children }) => {
 
                 } else if (state === "typePokemon") {
                     setPokemonByType(pokemonByType => [...pokemonByType, json])
+
+                } else if (state === "evolutionPokemon") {
+                    setEvolutionPokemonResult(evolutionPokemonResult => [...evolutionPokemonResult, json])
                 }
             })
     }
@@ -145,7 +150,7 @@ const PokeApiContext = ({ children }) => {
 
     return (
 
-        <ApiPoke.Provider value={{ pokemonByType, typeSearchResult, habitatDetail, byGenerationSearchResult, pokemonByHabitat, evolutionSearchResult, pokemonByGeneration, searchByCategory, generationSearchResult, pokemonSelect, specieSearchResult, setAbilitySearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, abilitySearchResult, searchBySubCategory, pokemon, mayPrimera }}>
+        <ApiPoke.Provider value={{ evolutionPokemonResult, pokemonByType, typeSearchResult, habitatDetail, byGenerationSearchResult, pokemonByHabitat, evolutionSearchResult, pokemonByGeneration, searchByCategory, generationSearchResult, pokemonSelect, specieSearchResult, setAbilitySearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, abilitySearchResult, searchBySubCategory, pokemon, mayPrimera }}>
 
             {children}
         </ApiPoke.Provider>

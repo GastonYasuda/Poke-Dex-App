@@ -16,10 +16,7 @@ const Buscador = ({ inputCharacter, setInputCharacter }) => {
         setInputCharacter(e.target.value)
     }
 
-
-
     return (
-
             <InputGroup className="mb-3" >
                 <Form.Control
                     placeholder="Search Pokemon by Name or Id"

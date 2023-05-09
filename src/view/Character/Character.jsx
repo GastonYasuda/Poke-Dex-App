@@ -8,9 +8,10 @@ import Card from 'react-bootstrap/Card';
 import Loading from '../../component/Loading/Loading'
 import Ability from '../../component/Ability/Ability'
 import Generation from '../../component/Generation/Generation'
-import EvolutionChain from '../../component/EvolutionChain/EvolutionChain'
+import EvolutionChainContainer from '../../component/EvolutionChainContainer/EvolutionChainContainer'
 import Description from '../../component/Description/Description'
 import VolverHome from '../../component/VolverHome/VolverHome'
+import MainHeader from '../../component/MainHeader/MainHeader'
 
 
 const Character = () => {
@@ -51,6 +52,7 @@ const Character = () => {
         <>
             <VolverBack />
             <VolverHome />
+
             {
                 pokemonSelect.length !== 0 && pokemonSelect !== undefined ?
 
@@ -72,7 +74,7 @@ const Character = () => {
                                 <section>
                                     <Description specieSearchResult={specieSearchResult} pokemonSelect={pokemonSelect} />
 
-                                    <EvolutionChain specieSearchResult={specieSearchResult} />
+                                    <EvolutionChainContainer specieSearchResult={specieSearchResult} />
                                 </section>
 
                             </div>

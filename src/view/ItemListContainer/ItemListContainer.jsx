@@ -3,7 +3,6 @@ import ItemList from '../../component/ItemList/ItemList';
 import { ApiPoke } from '../../context/PokeApiContext';
 import ByGeneration from '../../component/ByGeneration/ByGeneration';
 import Carousel from '../../component/PokeCarousel/PokeCarousel';
-import ToTop from '../../component/ToTop/ToTop';
 
 
 const ItemListContainer = () => {

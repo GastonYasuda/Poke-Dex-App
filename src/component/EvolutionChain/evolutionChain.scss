@@ -1,0 +1,26 @@
+.evolutionChain {
+    margin-top: 20px;
+    justify-content: flex-start;
+
+    span {
+        font-weight: 600;
+    }
+
+    &__container {
+        margin-top: 20px;
+        flex-wrap: wrap;
+
+        &-content {
+            margin: 10px;
+
+            img {
+                height: 60px;
+            }
+
+            span {
+                font-size: 12px;
+                font-weight: 300;
+            }
+        }
+    }
+}
