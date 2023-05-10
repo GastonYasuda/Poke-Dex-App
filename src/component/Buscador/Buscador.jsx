@@ -1,13 +1,15 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { FaSearch } from 'react-icons/fa';
+import { ApiPoke } from '../../context/PokeApiContext';
 
 
 
 const Buscador = ({ inputCharacter, setInputCharacter }) => {
+
 
 
 
@@ -17,17 +19,17 @@ const Buscador = ({ inputCharacter, setInputCharacter }) => {
     }
 
     return (
-            <InputGroup className="mb-3" >
-                <Form.Control
-                    placeholder="Search Pokemon by Name or Id"
-                    onChange={handleChange}
-                />
-                <Button variant="outline-secondary" id="button-addon2" >
-                    <Link to={`/character/${inputCharacter}`} >
-                        <FaSearch />
-                    </Link>
-                </Button>
-            </InputGroup>
+        <InputGroup className="mb-3" >
+            <Form.Control
+                placeholder="Search Pokemon by Name or Id"
+                onChange={handleChange}
+            />
+            <Button variant="outline-secondary" id="button-addon2" >
+                <Link to={`/character/${inputCharacter}`} >
+                    <FaSearch />
+                </Link>
+            </Button>
+        </InputGroup>
     )
 }
 

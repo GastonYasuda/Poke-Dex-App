@@ -1,50 +1,40 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext'
+import Evolution from '../Evolution/Evolution'
 
-const EvolutionChain = ({ evolutionStage }) => {
+const EvolutionChain = ({  evolutionSearchResult }) => {
 
-    const { searchBySubCategory, evolutionPokemonResult } = useContext(ApiPoke)
+    const {  evolutionPokemonResult,  } = useContext(ApiPoke)
+    const [evolutionStage, setEvolutionStage] = useState("");
 
 
     useEffect(() => {
 
-        if (evolutionStage.length !== 0) {
+        if (evolutionSearchResult.length !== 0) {
 
-            // console.log(evolutionStage) // me trae los nombres de la cadena de evoluciones
-            for (const key in evolutionStage) {
+            if (evolutionSearchResult.chain.evolves_to.length !== 0) {
 
-                searchBySubCategory("pokemon", evolutionStage[key], "evolutionPokemon") //evolutionPokemonResult
+                let tempEvolutionStage = [evolutionSearchResult.chain.species.name]
+                let currentChain = evolutionSearchResult.chain.evolves_to
+
+                while (currentChain.length !== 0) {
+                    currentChain.forEach(evolution => {
+                        tempEvolutionStage.push(evolution.species.name)
+                    });
+                    currentChain = currentChain[0].evolves_to
+                }
+                setEvolutionStage(tempEvolutionStage)
             }
         }
-    }, [evolutionStage])
+
+    }, [evolutionSearchResult])
+
 
     return (
-        <div className='evolutionChain d-flex-col'>
-            <span>Evolution Chain</span>
+        <>
+            <Evolution evolutionStage={evolutionStage} evolutionPokemonResult={evolutionPokemonResult} />
 
-            <div className='evolutionChain__container d-flex-row-align-center'>
-                {
-                    evolutionPokemonResult.map((evolution, i) => {
-                        return (
-                            <div key={i} className='evolutionChain__container-content'>
-                                <div className='d-flex-col-center'>
-                                    {
-                                        evolution["sprites"].other.dream_world.front_default === null ?
-                                            <img src={evolution["sprites"].front_default} alt={evolution.name} />
-                                            :
-                                            <img src={evolution["sprites"].other.dream_world.front_default} alt={evolution.name} />
-
-                                    }
-                                    <span className='evolutionChain__container-name'>{(evolution.name).toUpperCase()}</span>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-
-            </div>
-        </div>
-
+        </>
     )
 }
 

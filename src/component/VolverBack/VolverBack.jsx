@@ -5,11 +5,12 @@ import returnArrow from "../../assets/returnArrow.png"
 
 const VolverBack = () => {
 
-    const { setAbilitySearchResult } = useContext(ApiPoke)
+    const { setAbilitySearchResult, setEvolutionPokemonResult } = useContext(ApiPoke)
 
 
     const clearAbility = () => {
         setAbilitySearchResult([])
+        setEvolutionPokemonResult([])
         window.history.back()
     }
 

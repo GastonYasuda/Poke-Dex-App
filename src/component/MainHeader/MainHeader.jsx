@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import pokeNav from "../../assets/pokeNav.png";
 import Buscador from '../../component/Buscador/Buscador';
 import { Link } from 'react-router-dom';
+import { ApiPoke } from '../../context/PokeApiContext';
 
 
 const MainHeader = () => {
+
     const [inputCharacter, setInputCharacter] = useState("")
 
     return (

@@ -71,13 +71,14 @@ const PokeApiContext = ({ children }) => {
 
 
     const searchBySubCategory = (CategoryId, SubCategory, state) => {
-
         setAbilitySearchResult([])
         setPokemonByGeneration([])
         setPokemonByHabitat([])
         setTypeSearchResult([])
         setPokemonByType([])
         setEvolutionPokemonResult([])
+        setSpecieSearchResult([])
+
 
         fetch(`https://pokeapi.co/api/v2/${CategoryId}/${SubCategory}?limit=400`) //poner limite 400
             .then((response) => response.json())
@@ -111,6 +112,7 @@ const PokeApiContext = ({ children }) => {
                     setPokemonByType(pokemonByType => [...pokemonByType, json])
 
                 } else if (state === "evolutionPokemon") {
+
                     setEvolutionPokemonResult(evolutionPokemonResult => [...evolutionPokemonResult, json])
                 }
             })
@@ -150,7 +152,7 @@ const PokeApiContext = ({ children }) => {
 
     return (
 
-        <ApiPoke.Provider value={{ evolutionPokemonResult, pokemonByType, typeSearchResult, habitatDetail, byGenerationSearchResult, pokemonByHabitat, evolutionSearchResult, pokemonByGeneration, searchByCategory, generationSearchResult, pokemonSelect, specieSearchResult, setAbilitySearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, abilitySearchResult, searchBySubCategory, pokemon, mayPrimera }}>
+        <ApiPoke.Provider value={{ setEvolutionPokemonResult, evolutionPokemonResult, pokemonByType, typeSearchResult, habitatDetail, byGenerationSearchResult, pokemonByHabitat, evolutionSearchResult, pokemonByGeneration, searchByCategory, generationSearchResult, pokemonSelect, specieSearchResult, setAbilitySearchResult, setAbilityInfoFlavorTxt, setAbilityInfoNameTxt, setAbilityInfoEffectTxt, abilityInfoFlavorTxt, abilityInfoNameTxt, abilityInfoEffectTxt, abilityInfo, abilitySearchResult, searchBySubCategory, pokemon, mayPrimera }}>
 
             {children}
         </ApiPoke.Provider>

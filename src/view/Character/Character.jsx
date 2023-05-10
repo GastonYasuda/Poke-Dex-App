@@ -11,7 +11,6 @@ import Generation from '../../component/Generation/Generation'
 import EvolutionChainContainer from '../../component/EvolutionChainContainer/EvolutionChainContainer'
 import Description from '../../component/Description/Description'
 import VolverHome from '../../component/VolverHome/VolverHome'
-import MainHeader from '../../component/MainHeader/MainHeader'
 
 
 const Character = () => {
@@ -24,22 +23,24 @@ const Character = () => {
 
 
     useEffect(() => {
-        searchBySubCategory("pokemon", characterId, "pokemon")
+        searchBySubCategory("pokemon", characterId, "pokemon")//pokemonSelect
+        searchBySubCategory("pokemon-species", characterId, "specie")//specieSearchResult
 
-    }, [])
+    }, [characterId])
 
     useEffect(() => {
         if (pokemonSelect.length !== 0) {
+            console.log(specieSearchResult);//resultado viejo
+            console.log(pokemonSelect);//resultado nuevo
 
             if (pokemonSelect["sprites"].other.dream_world.front_default === null) {
                 setImgUrl(pokemonSelect["sprites"].front_default)
 
             } else {
                 setImgUrl(pokemonSelect["sprites"].other.dream_world.front_default)
-
             }
         }
-    }, [pokemonSelect, characterId])
+    }, [pokemonSelect])
 
 
     const seeAbility = (queHabilidad) => {
@@ -58,7 +59,7 @@ const Character = () => {
 
                     <Card className='characterCard '>
                         <Card.Header className='characterCard__header d-flex-row'>
-                            <h5> {mayPrimera(pokemonSelect.name)}</h5>
+                            <h5> {(pokemonSelect.name)}</h5>
 
                             <Generation characterId={characterId} specieSearchResult={specieSearchResult} />
 
