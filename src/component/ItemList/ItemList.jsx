@@ -12,7 +12,7 @@ const ItemList = ({ pokemon }) => {
 
     return (
         <section className='itemList'>
-            <Row xs={1} sm={2} md={3} lg={5} className="g-4 ">
+            <Row xs={2} sm={2} md={3} lg={5} className="g-4 ">
 
                 {
                     pokemon.map((unPokemon, i) => (

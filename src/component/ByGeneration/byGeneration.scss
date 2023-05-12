@@ -2,16 +2,32 @@
 
 .generationLinkContainer {
     width: 100%;
-    margin: 20px;
-    overflow-y: hidden;
+    margin: 20px 0 10px;
+    height: 50px;
+    overflow-x: scroll;
 
     &__link {
-        margin: 0 15px;
-        text-decoration: none;
-        color: colorVariable.$principalColor ;
+        position: relative;
+        display: flex;
+        flex-direction: row;
 
-        &:hover {
-            text-decoration: underline;
+        a {
+            flex-wrap: nowrap;
+            margin: 0 15px;
+            text-decoration: none;
+            min-width: 150px;
+            color: colorVariable.$principalColor ;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .generationLinkContainer {
+        height: auto;
     }
 }

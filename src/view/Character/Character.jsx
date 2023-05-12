@@ -66,13 +66,13 @@ const Character = () => {
                         </Card.Header>
 
 
-                        <Card.Body className='characterCard__body d-flex-col-center'>
+                        <Card.Body className='characterCard__body '>
 
                             <div className='characterCard__body-container d-flex-row'>
 
                                 <Card.Img className='characterCard__body-container-img' src={imgUrl} alt={pokemonSelect.name} />
 
-                                <section>
+                                <section className='descriptionEvolution'>
                                     <Description specieSearchResult={specieSearchResult} pokemonSelect={pokemonSelect} />
 
                                     <EvolutionChainContainer specieSearchResult={specieSearchResult} />

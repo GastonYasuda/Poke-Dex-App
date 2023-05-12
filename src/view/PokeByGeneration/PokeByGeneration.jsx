@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom'
 import VolverHome from '../../component/VolverHome/VolverHome'
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
+import VolverBack from '../../component/VolverBack/VolverBack'
 
 const PokeByGeneration = () => {
 
@@ -28,15 +29,16 @@ const PokeByGeneration = () => {
 
     return (
         <>
+            <VolverBack />
             <VolverHome />
 
             {
                 generationSearchResult.length !== 0
                     ?
-                    <section className='itemList'>
-                        <Row xs={1} sm={2} md={4} lg={5} className="g-4 ">
-                            <h1>{(generationSearchResult.name).toUpperCase()}</h1>
-                            <p>Main region: {mayPrimera(generationSearchResult.main_region.name)}</p>
+                    <section className='itemList d-flex-col-center'>
+                        <h1>{(generationSearchResult.name).toUpperCase()}</h1>
+                        <p>Main region: {mayPrimera(generationSearchResult.main_region.name)}</p>
+                        <Row xs={2} sm={2} md={4} lg={5} className="g-4 ">
 
                             {
                                 pokemonByGeneration.map((poke, i) => {
@@ -47,8 +49,7 @@ const PokeByGeneration = () => {
                                                 <Card.Header>
                                                     <Card.Title className='card__title'>{mayPrimera(poke.name)}</Card.Title>
                                                 </Card.Header>
-                                                {console.log(poke)}
-                                                <Card.Body>
+                                                <Card.Body className='d-flex-col card__body'>
                                                     {
 
                                                         poke["sprites"].other.dream_world.front_default !== null ?

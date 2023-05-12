@@ -4,11 +4,11 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Mulish', sans-serif;
 }
 
 .main__body {
     width: 80%;
-    font-family: 'Mulish', sans-serif;
 }
 
 //--------------------------DISPLAY FLEX column
@@ -58,6 +58,7 @@
     .cardImg {
         max-height: 120px;
         transition: transform 0.5s;
+        align-content: center;
 
         &:hover {
             transform: scale(1.2)
@@ -81,5 +82,5 @@
 @import "../component/ToTop/toTop.scss";
 @import "../component/VolverBack/volverBack.scss";
 @import "../component/Description/description.scss";
-@import "../component/Ability/ability.scss";
 @import "../component/EvolutionChain/evolutionChain.scss";
+@import "../component/MainHeader/mainHeader.scss";

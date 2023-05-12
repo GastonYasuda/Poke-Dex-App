@@ -80,6 +80,7 @@ const PokeApiContext = ({ children }) => {
         setSpecieSearchResult([])
 
 
+
         fetch(`https://pokeapi.co/api/v2/${CategoryId}/${SubCategory}?limit=400`) //poner limite 400
             .then((response) => response.json())
             .then((json) => {
@@ -112,7 +113,6 @@ const PokeApiContext = ({ children }) => {
                     setPokemonByType(pokemonByType => [...pokemonByType, json])
 
                 } else if (state === "evolutionPokemon") {
-
                     setEvolutionPokemonResult(evolutionPokemonResult => [...evolutionPokemonResult, json])
                 }
             })

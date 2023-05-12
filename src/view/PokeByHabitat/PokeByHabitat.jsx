@@ -34,10 +34,9 @@ const PokeByHabitat = () => {
             <VolverHome />
             {
                 pokemonByHabitat.length !== 0 ?
-                    <section className='itemList'>
-                        <Row xs={1} sm={2} md={4} lg={5} className="g-4 ">
-                            <h1>{(habitatDetail.name).toUpperCase()}</h1>
-
+                    <section className='itemList d-flex-col-center'>
+                        <h1>{(habitatDetail.name).toUpperCase()}</h1>
+                        <Row xs={2} sm={2} md={4} lg={5} className="g-4 ">
                             {
                                 pokemonByHabitat.map((poke, i) => {
                                     return (
@@ -48,7 +47,7 @@ const PokeByHabitat = () => {
                                                     <Card.Title className='card__title'>{mayPrimera(poke.name)}</Card.Title>
                                                 </Card.Header>
 
-                                                <Card.Body>
+                                                <Card.Body className='d-flex-col card__body'>
                                                     {
                                                         poke["sprites"].other.dream_world.front_default !== null ?
                                                             <Card.Img className='cardImg' src={poke["sprites"].other.dream_world.front_default} alt={poke.name} />

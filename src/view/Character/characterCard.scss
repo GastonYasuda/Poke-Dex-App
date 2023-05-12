@@ -53,3 +53,35 @@
     }
 
 }
+
+@media only screen and (max-width: 600px) {
+    .characterCard {
+        &__body {
+
+            &-container {
+                flex-direction: column;
+
+
+            }
+
+            .descriptionEvolution {
+                margin-top: 40px;
+            }
+
+            .showAbilityStyle {
+                margin: 0;
+            }
+        }
+
+        &__footer {
+            &-button {
+                flex-direction: column;
+
+                .buttonStyle {
+                    margin: 10px;
+                }
+
+            }
+        }
+    }
+}

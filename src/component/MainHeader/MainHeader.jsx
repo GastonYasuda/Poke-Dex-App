@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import pokeNav from "../../assets/pokeNav.png";
 import Buscador from '../../component/Buscador/Buscador';
 import { Link } from 'react-router-dom';
-import { ApiPoke } from '../../context/PokeApiContext';
 
 
 const MainHeader = () => {
@@ -10,10 +9,10 @@ const MainHeader = () => {
     const [inputCharacter, setInputCharacter] = useState("")
 
     return (
-        <section className='main__header d-flex-col-center'>
+        <section className='header'>
 
-            <div className='main__header-container '>
-                <Link to={'/'} className='d-flex-col-center'>
+            <div className='header__container '>
+                <Link to={'/'} className=' d-flex-col-center'>
                     <img src={pokeNav} alt="pokeNav" />
                 </Link>
 

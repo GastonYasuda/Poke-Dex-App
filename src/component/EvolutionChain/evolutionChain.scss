@@ -1,6 +1,8 @@
+@use '../../styles/colorVariable';
+
 .evolutionChain {
-    margin-top: 20px;
-    justify-content: flex-start;
+    width: 100%;
+    margin: 20px auto;
 
     span {
         font-weight: 600;
@@ -8,7 +10,7 @@
 
     &__container {
         margin-top: 20px;
-        flex-wrap: wrap;
+        overflow: scroll;
 
         &-content {
             margin: 10px;
@@ -17,10 +19,31 @@
                 height: 60px;
             }
 
+
             span {
                 font-size: 12px;
                 font-weight: 300;
+                color: colorVariable.$principalColor;
             }
         }
+
+        a {
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: solid;
+            }
+        }
+
+
     }
+}
+
+@media only screen and (max-width: 600px) {
+
+
+
+
+
+    
 }

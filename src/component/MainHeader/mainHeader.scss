@@ -1,0 +1,30 @@
+.header {
+    width: 100%;
+    position: relative;
+    background-color: colorVariable.$principalColor;
+
+    &__container {
+        width: 80%;
+        padding: 20px;
+        margin: 0 auto;
+
+        img {
+            width: 20%;
+            margin: 15px auto 30px;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .header {
+        &__container {
+            width: 90%;
+
+            img {
+                width: 80%;
+            }
+        }
+    }
+
+
+}

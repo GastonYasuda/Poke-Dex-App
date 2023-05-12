@@ -2,18 +2,12 @@
 
 .main {
 
-    &__header {
+    width: 100%;
+
+    &__body {
+
         width: 100%;
-        background-color: colorVariable.$principalColor;
-
-        &-container {
-            width: 80%;
-
-            img {
-                width: 30%;
-                margin: 15px auto;
-            }
-        }
-
     }
+
+
 }

@@ -2,20 +2,25 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext'
 import { Link } from 'react-router-dom'
 
-const Evolution = ({ evolutionStage, evolutionPokemonResult }) => {
+const Evolution = ({ evolutionStage }) => {
 
-    const { searchBySubCategory } = useContext(ApiPoke)
+    const { searchBySubCategory, evolutionPokemonResult } = useContext(ApiPoke)
+
     useEffect(() => {
 
         if (evolutionStage.length !== 0) {
             // console.log(evolutionStage) // me trae los nombres de la cadena de evoluciones
+            console.log("hola");
+
             for (const key in evolutionStage) {
 
                 searchBySubCategory("pokemon", evolutionStage[key], "evolutionPokemon") //evolutionPokemonResult
             }
+            console.log(evolutionStage);
+            console.log(evolutionStage.length);
         }
     }, [evolutionStage])
-    
+
 
     return (
         <div className='evolutionChain d-flex-col'>
@@ -23,6 +28,7 @@ const Evolution = ({ evolutionStage, evolutionPokemonResult }) => {
             <span>Evolution Chain</span>
 
             <div className='evolutionChain__container d-flex-row-align-center'>
+                {console.log(evolutionPokemonResult)}
                 {
                     evolutionPokemonResult.map((evolution, i) => {
                         return (
@@ -36,7 +42,7 @@ const Evolution = ({ evolutionStage, evolutionPokemonResult }) => {
                                                 <img src={evolution["sprites"].other.dream_world.front_default} alt={evolution.name} />
 
                                         }
-                                        <span className='evolutionChain__container-name'>{(evolution.name).toUpperCase()}</span>
+                                        <span className='evolutionChain__container-content-name'>{(evolution.name).toUpperCase()}</span>
                                     </div>
                                 </div>
                             </Link>
