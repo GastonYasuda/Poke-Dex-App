@@ -119,7 +119,7 @@ html {
     width: 100%;
     margin: 20px 0 10px;
     height: 50px;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .generationLinkContainer__link {
@@ -151,6 +151,7 @@ html {
 
 .descriptionItem {
     align-items: center;
+    margin: 10px;
 }
 
 .descriptionItem-title {
@@ -179,7 +180,7 @@ html {
 
 .evolutionChain__container {
     margin-top: 20px;
-    overflow: scroll;
+    overflow-x: auto;
     justify-content: center;
 }
 
@@ -278,7 +279,7 @@ html {
 }
 
 .characterCard__header {
-    
+
     justify-content: space-between;
 }
 
@@ -330,12 +331,12 @@ html {
     .showAbilityStyle {
         margin: 0;
     }
-}
 
-.characterCard__footer-button {
-    flex-direction: column;
-}
+    .characterCard__footer-button {
+        flex-direction: column;
+    }
 
-.buttonStyle {
-    margin: 10px;
+    .buttonStyle {
+        margin: 10px;
+    }
 }

@@ -1,9 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import "./styles/styles.scss";
-
-
-import "./styles/hola.css"
+import "./styles/style.css"
 import Character from './view/Character/Character';
 import PokeApiContext from './context/PokeApiContext';
 import ItemListContainer from './view/ItemListContainer/ItemListContainer';
