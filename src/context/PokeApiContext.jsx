@@ -12,7 +12,7 @@ const PokeApiContext = ({ children }) => {
             .then((response) => response.json())
             .then((json) => {
                 const misPokemones = (json.results)
-                misPokemones.map((miPoke) => {
+                misPokemones.forEach((miPoke) => {
                     fetch(miPoke.url)
                         .then((response) => response.json())
                         .then((json) => {
