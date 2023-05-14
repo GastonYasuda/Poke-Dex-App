@@ -33,11 +33,7 @@ const EvolutionChain = ({ evolutionSearchResult }) => {
 
 
     return (
-        <>
-            {console.log(evolutionStage)}
-            <Evolution evolutionStage={evolutionStage} />
-
-        </>
+        <Evolution evolutionStage={evolutionStage} />
     )
 }
 

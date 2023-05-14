@@ -20,6 +20,7 @@ const EvolutionChainContainer = ({ specieSearchResult }) => {
 
     return (
         <EvolutionChain evolutionSearchResult={evolutionSearchResult} />
+
     )
 }
 

@@ -8,16 +8,17 @@ const Evolution = ({ evolutionStage }) => {
 
     useEffect(() => {
 
+
         if (evolutionStage.length !== 0) {
             // console.log(evolutionStage) // me trae los nombres de la cadena de evoluciones
-            console.log("hola");
+            // console.log("hola");
 
             for (const key in evolutionStage) {
 
                 searchBySubCategory("pokemon", evolutionStage[key], "evolutionPokemon") //evolutionPokemonResult
             }
-            console.log(evolutionStage);
-            console.log(evolutionStage.length);
+            // console.log(evolutionStage);
+            // console.log(evolutionStage.length);
         }
     }, [evolutionStage])
 
@@ -26,9 +27,8 @@ const Evolution = ({ evolutionStage }) => {
         <div className='evolutionChain d-flex-col'>
 
             <span>Evolution Chain</span>
-
             <div className='evolutionChain__container d-flex-row-align-center'>
-                {console.log(evolutionPokemonResult)}
+
                 {
                     evolutionPokemonResult.map((evolution, i) => {
                         return (

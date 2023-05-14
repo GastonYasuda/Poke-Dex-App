@@ -88,12 +88,12 @@ const Character = () => {
 
                         < Card.Footer className='characterCard__footer'>
                             <div className="characterCard__footer-button d-flex-row">
-                                <span className='descriptionItem-title'>Ability:</span>
+                                <span className='descriptionItem-title'>Ability: </span>
                                 {
                                     pokemonSelect["abilities"].map((cadaAbility, i) => {
                                         return (
                                             <Button key={i} onClick={() => { seeAbility(cadaAbility.ability.name) }} className='buttonStyle'>
-                                                <span>{mayPrimera(cadaAbility.ability.name)}</span>
+                                                <span> {mayPrimera(cadaAbility.ability.name)}</span>
                                             </Button >
                                         )
                                     })
