@@ -1,5 +1,7 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import "./styles/styles.scss";
+
 import Character from './view/Character/Character';
 import PokeApiContext from './context/PokeApiContext';
 import ItemListContainer from './view/ItemListContainer/ItemListContainer';
@@ -13,7 +15,7 @@ function App() {
   return (
     <PokeApiContext>
       <BrowserRouter>
-      
+
         <MainHeader />
 
         <Routes>

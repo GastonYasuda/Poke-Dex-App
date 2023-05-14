@@ -1,86 +1,86 @@
-@use '../styles/colorVariable';
+/* // @use '../styles/colorVariable';
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Mulish', sans-serif;
-}
+// * {
+//     padding: 0;
+//     margin: 0;
+//     box-sizing: border-box;
+//     font-family: 'Mulish', sans-serif;
+// }
 
-.main__body {
-    width: 80%;
-}
+// .main__body {
+//     width: 80%;
+// }
 
-//--------------------------DISPLAY FLEX column
-.d-flex-col {
-    display: flex;
-    flex-direction: column;
-}
+// //--------------------------DISPLAY FLEX column
+// .d-flex-col {
+//     display: flex;
+//     flex-direction: column;
+// }
 
-.d-flex-col-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+// .d-flex-col-center {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+// }
 
-//--------------------------DISPLAY FLEX row
+// //--------------------------DISPLAY FLEX row
 
-.d-flex-row {
-    display: flex;
-    flex-direction: row;
-}
+// .d-flex-row {
+//     display: flex;
+//     flex-direction: row;
+// }
 
-.d-flex-row-center {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
+// .d-flex-row-center {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+// }
 
-.d-flex-row-align-center {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
+// .d-flex-row-align-center {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+// }
 
-.card {
-    &__title {
-        color: colorVariable.$principalColor ;
-    }
+// .card {
+//     &__title {
+//         color: colorVariable.$principalColor ;
+//     }
 
-    min-height: 250px;
-    transition: filter 0.7s;
+//     min-height: 250px;
+//     transition: filter 0.7s;
 
-    &:hover {
-        filter: drop-shadow(0px 0px 22px rgba(0, 0, 0, 0.3));
+//     &:hover {
+//         filter: drop-shadow(0px 0px 22px rgba(0, 0, 0, 0.3));
 
-    }
+//     }
 
-    .cardImg {
-        max-height: 120px;
-        transition: transform 0.5s;
-        align-content: center;
+//     .cardImg {
+//         max-height: 120px;
+//         transition: transform 0.5s;
+//         align-content: center;
 
-        &:hover {
-            transform: scale(1.2)
-        }
+//         &:hover {
+//             transform: scale(1.2)
+//         }
 
-    }
-}
+//     }
+// }
 
-.buttonStyle {
-    margin: 0 8px
-}
+// .buttonStyle {
+//     margin: 0 8px
+// }
 
-.m-top {
-    margin-top: 55px
-}
+// .m-top {
+//     margin-top: 55px
+// }
 
-@import "../view/ItemListContainer/ItemListContainer.scss";
-@import "../component/ByGeneration/byGeneration.scss";
-@import "../view/Character/characterCard.scss";
-@import "../component/ItemList/itemList.scss";
-@import "../component/ToTop/toTop.scss";
-@import "../component/VolverBack/volverBack.scss";
-@import "../component/Description/description.scss";
-@import "../component/EvolutionChain/evolutionChain.scss";
-@import "../component/MainHeader/mainHeader.scss";
+// @import "../view/ItemListContainer/ItemListContainer.scss";
+// @import "../component/ByGeneration/byGeneration.scss";
+// @import "../view/Character/characterCard.scss";
+// @import "../component/ItemList/itemList.scss";
+// @import "../component/ToTop/toTop.scss";
+// @import "../component/VolverBack/volverBack.scss";
+// @import "../component/Description/description.scss";
+// @import "../component/EvolutionChain/evolutionChain.scss";
+// @import "../component/MainHeader/mainHeader.scss"; */
