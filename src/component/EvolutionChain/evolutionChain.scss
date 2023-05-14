@@ -2,15 +2,17 @@
 
 .evolutionChain {
     width: 100%;
-    margin: 20px auto;
+    margin: 40px auto;
 
     span {
         font-weight: 600;
+        text-align: center;
     }
 
     &__container {
         margin-top: 20px;
         overflow: scroll;
+        justify-content: center;
 
         &-content {
             margin: 10px;
@@ -40,10 +42,10 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .evolutionChain {
+        &__container {
+            justify-content: flex-start;
+        }
+    }
 
-
-
-
-
-    
 }

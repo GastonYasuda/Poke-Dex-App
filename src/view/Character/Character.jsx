@@ -59,7 +59,7 @@ const Character = () => {
 
                     <Card className='characterCard '>
                         <Card.Header className='characterCard__header d-flex-row'>
-                            <h5> {(pokemonSelect.name)}</h5>
+                            <span> {mayPrimera(pokemonSelect.name)}</span>
 
                             <Generation characterId={characterId} specieSearchResult={specieSearchResult} />
 
@@ -72,14 +72,14 @@ const Character = () => {
 
                                 <Card.Img className='characterCard__body-container-img' src={imgUrl} alt={pokemonSelect.name} />
 
-                                <section className='descriptionEvolution'>
+                                <section className='description'>
                                     <Description specieSearchResult={specieSearchResult} pokemonSelect={pokemonSelect} />
 
-                                    <EvolutionChainContainer specieSearchResult={specieSearchResult} />
                                 </section>
 
                             </div>
 
+                            <EvolutionChainContainer specieSearchResult={specieSearchResult} />
 
                             <Ability showAbility={showAbility} />
 

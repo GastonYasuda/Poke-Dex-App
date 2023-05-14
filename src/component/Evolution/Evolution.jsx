@@ -37,7 +37,18 @@ const Evolution = ({ evolutionStage }) => {
                                     <div className='d-flex-col-center'>
                                         {
                                             evolution["sprites"].other.dream_world.front_default === null ?
-                                                <img src={evolution["sprites"].front_default} alt={evolution.name} />
+                                                <>
+                                                    {
+                                                        evolution["sprites"].front_default === null ?
+                                                            <>
+                                                                <img src='../../assets/pokeball.png' alt="null image" />
+                                                                <h1>hola</h1>
+                                                            </>
+                                                            :
+                                                            <img src={evolution["sprites"].front_default} alt={evolution.name} />
+                                                    }
+                                                </>
+
                                                 :
                                                 <img src={evolution["sprites"].other.dream_world.front_default} alt={evolution.name} />
 

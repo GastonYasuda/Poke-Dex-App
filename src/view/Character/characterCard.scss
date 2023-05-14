@@ -6,9 +6,9 @@
 
     &__header {
         justify-content: space-between;
-        align-items: center;
 
-        h5 {
+        span {
+            font-weight: 600;
             color: colorVariable.$principalColor;
 
         }
@@ -64,7 +64,7 @@
 
             }
 
-            .descriptionEvolution {
+            .description {
                 margin-top: 40px;
             }
 
