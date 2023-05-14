@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext'
 import EvolutionChain from '../EvolutionChain/EvolutionChain'
 

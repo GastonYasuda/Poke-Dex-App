@@ -1,17 +1,11 @@
-import React, { useContext, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import React from 'react'
+import { Link} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { FaSearch } from 'react-icons/fa';
-import { ApiPoke } from '../../context/PokeApiContext';
-
-
 
 const Buscador = ({ inputCharacter, setInputCharacter }) => {
-
-
-
 
     const handleChange = (e) => {
         console.log(e.target.value);

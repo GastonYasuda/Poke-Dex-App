@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ApiPoke } from '../../context/PokeApiContext'
 import { Link } from 'react-router-dom'
 
@@ -41,7 +41,7 @@ const Evolution = ({ evolutionStage }) => {
                                                     {
                                                         evolution["sprites"].front_default === null ?
                                                             <>
-                                                                <img src='../../assets/pokeball.png' alt="null image" />
+                                                                <img src='../../assets/pokeball.png' alt="null pic" />
                                                                 <h1>hola</h1>
                                                             </>
                                                             :

@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { ApiPoke } from '../../context/PokeApiContext'
+import React, { useEffect, useState } from 'react'
 import Evolution from '../Evolution/Evolution'
 
 const EvolutionChain = ({ evolutionSearchResult }) => {

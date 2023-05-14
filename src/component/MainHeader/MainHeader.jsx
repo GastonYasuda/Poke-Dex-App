@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import pokeNav from "../../assets/pokeNav.png";
 import Buscador from '../../component/Buscador/Buscador';
 import { Link } from 'react-router-dom';
