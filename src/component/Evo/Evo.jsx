@@ -1,10 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Evo = ({ evolutionPokemonResult }) => {
-    useEffect(() => {
-        console.log(evolutionPokemonResult);
-    }, [evolutionPokemonResult])
     
     return (
         <div className='evolutionChain d-flex-col'>

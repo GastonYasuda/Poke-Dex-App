@@ -22,7 +22,7 @@ const Description = ({ specieSearchResult, pokemonSelect }) => {
 
 
     return (
-        <div>
+        <div className='d-flex-col'>
             {
                 habitatDetail.length !== 0 &&
                 <div className='descriptionItem d-flex-row'>

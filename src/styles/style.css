@@ -13,7 +13,6 @@ html {
     scroll-behavior: smooth;
 }
 
-
 .main__body {
     width: 80%;
 }
@@ -62,6 +61,7 @@ html {
     max-height: 120px;
     transition: transform 0.5s;
     align-content: center;
+    object-fit: contain;
 }
 
 .cardImg:hover {
@@ -151,7 +151,7 @@ html {
 
 .descriptionItem {
     align-items: center;
-    margin: 10px;
+    margin: 20px 10px 0 0;
 }
 
 .descriptionItem-title {
@@ -177,11 +177,10 @@ html {
 
 .evolutionChain span {
     font-weight: 600;
-    text-align: center;
 }
 
 .evolutionChain__container {
-    margin-top: 20px;
+    width: 100%;
     overflow-x: auto;
     justify-content: center;
 }
@@ -213,6 +212,12 @@ html {
     .evolutionChain__container {
         justify-content: flex-start;
     }
+
+    .characterCard__body-container {
+
+        align-items: center;
+    }
+
 }
 
 /* ------------------------------------------ItemList */
@@ -292,6 +297,7 @@ html {
 
 .characterCard__body {
     width: 100%;
+    position: relative;
     margin: 45px 0 20px;
 }
 
@@ -328,6 +334,7 @@ html {
 
     .description {
         margin-top: 40px;
+        width: 100%;
     }
 
     .showAbilityStyle {

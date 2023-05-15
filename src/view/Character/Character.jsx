@@ -72,14 +72,14 @@ const Character = () => {
 
                                 <Card.Img className='characterCard__body-container-img' src={imgUrl} alt={pokemonSelect.name} />
 
-                                <section className='description'>
+                                <section className='description d-flex-col'>
                                     <Description specieSearchResult={specieSearchResult} pokemonSelect={pokemonSelect} />
 
+                                    <EvolutionChainContainer specieSearchResult={specieSearchResult} />
                                 </section>
 
                             </div>
 
-                            <EvolutionChainContainer specieSearchResult={specieSearchResult} />
 
                             <Ability showAbility={showAbility} />
 
