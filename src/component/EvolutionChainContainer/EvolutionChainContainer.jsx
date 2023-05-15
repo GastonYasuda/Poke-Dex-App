@@ -4,7 +4,8 @@ import EvolutionChain from '../EvolutionChain/EvolutionChain'
 
 const EvolutionChainContainer = ({ specieSearchResult }) => {
 
-    const { searchByCategory, evolutionSearchResult } = useContext(ApiPoke)
+    const { searchByCategory, evolutionSearchResult, setEvolutionPokemonResult } = useContext(ApiPoke)
+
 
     useEffect(() => {
 
@@ -12,6 +13,8 @@ const EvolutionChainContainer = ({ specieSearchResult }) => {
 
             const { evolution_chain } = specieSearchResult
             // console.log(evolution_chain.url) //me trae un url
+            setEvolutionPokemonResult([])
+
             searchByCategory(evolution_chain.url, "evolution")// me trae evolutionSearchResult
         }
 

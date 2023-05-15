@@ -25,7 +25,7 @@ const Ability = ({ showAbility }) => {
                 showAbility ?
                     <>
                         <Card.Text>
-                            <span className='descriptionItem-title'>Ability: </span>
+                            <span className='descriptionItem-title'>Ability:</span>
                             <span className='descriptionItem-item'>{abilityInfoNameTxt}</span>
                         </Card.Text >
 

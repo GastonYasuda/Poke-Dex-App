@@ -76,8 +76,6 @@ const PokeApiContext = ({ children }) => {
         setPokemonByHabitat([])
         setTypeSearchResult([])
         setPokemonByType([])
-        setSpecieSearchResult([])
-
 
 
         fetch(`https://pokeapi.co/api/v2/${CategoryId}/${SubCategory}?limit=400`) //poner limite 400
