@@ -22,7 +22,7 @@ const Evo = ({ evolutionPokemonResult}) => {
                                                     {
                                                         evolution["sprites"].front_default === null ?
                                                             <>
-                                                                <img src='../../assets/pokeball.png' alt="null pic" />
+                                                                <img src='/assets/pokeball.png' alt="null pic" />
                                                             </>
                                                             :
                                                             <img src={evolution["sprites"].front_default} alt={evolution.name} />

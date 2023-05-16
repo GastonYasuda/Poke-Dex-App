@@ -18,7 +18,7 @@ const VolverBack = () => {
 
         <button onClick={() => { clearAbility() }} className='backArrow'>
 
-            <img src={returnArrow} alt="flecha subir" />
+            <img src={returnArrow} alt="chau" />
 
         </button>
     )
