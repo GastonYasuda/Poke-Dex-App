@@ -5,12 +5,16 @@ import pokeNav from "../../assets/pokeNav.png";
 
 const ToTop = () => {
     return (
-        <button className="upArrow">
-            <a href="#top">
-                <img src={upArrow} alt="flecha subir" />
+        <>
+            <button className="upArrow">
+                <a href="#top">
+                    <img src={upArrow} alt="flecha subir" />
+                </a>
                 <img src={pokeNav} alt="pokeNav" />
-            </a>
-        </button>
+            </button>
+            <img src={pokeNav} alt="pokeNav" />
+        </>
+
     )
 }
 
