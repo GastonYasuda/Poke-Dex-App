@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Evo = ({ evolutionPokemonResult }) => {
-    
+const Evo = ({ evolutionPokemonResult}) => {
+
+
+
+
     return (
         <div className='evolutionChain d-flex-col'>
-
             <span>Evolution Chain</span>
             <div className='evolutionChain__container d-flex-row-align-center'>
-
                 {
                     evolutionPokemonResult.map((evolution, i) => {
                         return (
@@ -39,9 +40,7 @@ const Evo = ({ evolutionPokemonResult }) => {
                         )
                     })
                 }
-
             </div>
-
         </div>
     )
 }

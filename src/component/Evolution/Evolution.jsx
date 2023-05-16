@@ -6,6 +6,7 @@ const Evolution = ({ evolutionStage }) => {
 
     const { searchBySubCategory, evolutionPokemonResult } = useContext(ApiPoke)
 
+
     useEffect(() => {
 
 
@@ -23,6 +24,7 @@ const Evolution = ({ evolutionStage }) => {
 
     return (
         <Evo evolutionPokemonResult={evolutionPokemonResult} />
+
     )
 }
 
