@@ -11,6 +11,7 @@ import Generation from '../../component/Generation/Generation'
 import EvolutionChainContainer from '../../component/EvolutionChainContainer/EvolutionChainContainer'
 import Description from '../../component/Description/Description'
 import VolverHome from '../../component/VolverHome/VolverHome'
+import RouteError from '../../component/RouteError/RouteError'
 
 
 const Character = () => {
@@ -103,7 +104,10 @@ const Character = () => {
 
                     </Card>
                     :
-                    <Loading />
+                    <>
+                        <Loading />
+                        <RouteError />
+                    </>
             }
         </>
     )

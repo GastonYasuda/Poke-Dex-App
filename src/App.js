@@ -9,6 +9,7 @@ import PokeByHabitat from './view/PokeByHabitat/PokeByHabitat';
 import PokeByType from './view/PokeByType/PokeByType';
 import ToTop from './component/ToTop/ToTop';
 import MainHeader from './component/MainHeader/MainHeader';
+import RouteError from './component/RouteError/RouteError';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
           <Route path='/habitat/:habitatId' element={<PokeByHabitat />} />
           <Route path='/type/:typeId' element={<PokeByType />} />
 
-
+          <Route path='*' element={<RouteError />} />
         </Routes>
 
         <ToTop />
