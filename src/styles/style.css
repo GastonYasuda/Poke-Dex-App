@@ -262,7 +262,7 @@ html {
 
 /*--------------------------------------------------volverBack*/
 .backArrow {
-
+    display: inline;
     margin: 10px;
     background-color: transparent;
     border: none;

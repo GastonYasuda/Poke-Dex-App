@@ -16,11 +16,11 @@ const VolverBack = () => {
 
     return (
 
-        <button onClick={() => { clearAbility() }} className='backArrow'>
+        <div onClick={() => { clearAbility() }} className='backArrow'>
 
             <img src={returnArrow} alt="chau" />
 
-        </button>
+        </div>
     )
 }
 
