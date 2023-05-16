@@ -8,11 +8,10 @@ const ToTop = () => {
         <>
             <button className="upArrow">
                 <a href="#top">
-                    <img src={upArrow} alt="flecha subir" />
                 </a>
                 <img src={pokeNav} alt="pokeNav" />
             </button>
-            <img src={pokeNav} alt="pokeNav" />
+            <img src={upArrow} alt="flecha subir" />
         </>
 
     )
