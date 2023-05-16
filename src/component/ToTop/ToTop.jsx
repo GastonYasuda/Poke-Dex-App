@@ -9,7 +9,6 @@ const ToTop = () => {
             <a href="#top">
                 <img src={upArrow} alt="flecha subir" />
                 <img src={pokeNav} alt="pokeNav" />
-
             </a>
         </button>
     )
