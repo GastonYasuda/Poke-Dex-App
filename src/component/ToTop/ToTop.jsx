@@ -9,13 +9,9 @@ const ToTop = () => {
     }
 
     return (
-        <>
             <div className="upArrow" onClick={toTop}>
                 <img src={upArrow} alt="pokeNav" />
             </div>
-
-        </>
-
     )
 }
 
