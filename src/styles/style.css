@@ -346,3 +346,17 @@ html {
         margin: 10px;
     }
 }
+
+/* -----------------------------------routerError */
+.routerError {
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.routerError img {
+    width: 20%;
+}
+
+.routerError span {
+    text-align: center;
+}
