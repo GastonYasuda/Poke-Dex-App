@@ -9,22 +9,19 @@ const Evolution = ({ evolutionStage }) => {
 
     useEffect(() => {
 
-
         if (evolutionStage.length !== 0) {
-            // console.log("hola");
 
-            evolutionStage.forEach(element => {
-                searchBySubCategory("pokemon", element, "evolutionPokemon") //evolutionPokemonResult
-            });
-
-            // console.log(evolutionStage.length);
+            for (let i = 0; evolutionStage.length > i; i++) {
+                searchBySubCategory("pokemon", evolutionStage[i], "evolutionPokemon") //evolutionPokemonResult 
+            }
         }
     }, [evolutionStage])
 
 
     return (
-        <Evo evolutionPokemonResult={evolutionPokemonResult} />
-
+        <>
+            < Evo evolutionPokemonResult={evolutionPokemonResult} />
+        </>
     )
 }
 

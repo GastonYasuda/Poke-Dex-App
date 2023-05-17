@@ -8,7 +8,6 @@ import { FaSearch } from 'react-icons/fa';
 const Buscador = ({ inputCharacter, setInputCharacter }) => {
 
     const handleChange = (e) => {
-        console.log(e.target.value);
         setInputCharacter(e.target.value)
     }
 

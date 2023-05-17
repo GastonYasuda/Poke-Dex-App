@@ -4,8 +4,6 @@ import Evolution from '../Evolution/Evolution'
 const EvolutionChain = ({ evolutionSearchResult }) => {
 
     const [evolutionStage, setEvolutionStage] = useState("");
-    const [showEvolution, setShowEvolution] = useState(false)
-
 
 
     useEffect(() => {
@@ -14,37 +12,28 @@ const EvolutionChain = ({ evolutionSearchResult }) => {
 
             let tempEvolutionStage = [evolutionSearchResult.chain.species.name]
             let currentChain = evolutionSearchResult.chain.evolves_to
-            if (evolutionSearchResult.chain.evolves_to.length !== 0) {
-                setShowEvolution(true)
 
+            if (evolutionSearchResult.chain.evolves_to.length !== 0) {
 
                 while (currentChain.length !== 0) {
                     currentChain.forEach(evolution => {
                         if (!tempEvolutionStage.includes(evolution.species.name)) {
-
-                            tempEvolutionStage.push(evolution.species.name);
+                            tempEvolutionStage.push(evolution.species.name)
                         }
-                    });
+                    })
                     currentChain = currentChain[0].evolves_to
                 }
                 setEvolutionStage(tempEvolutionStage)
 
-            } else {
-                setShowEvolution(false)
-            }
-
+            } 
         }
 
     }, [evolutionSearchResult])
 
+
     return (
-        <>
-            {
-                showEvolution ?
-                    <Evolution evolutionStage={evolutionStage} />
-                    : null
-            }
-        </>
+        <Evolution evolutionStage={evolutionStage} />
+
     )
 }
 

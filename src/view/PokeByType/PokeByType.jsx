@@ -15,26 +15,17 @@ const PokeByType = () => {
     useEffect(() => {
 
         if (typeSearchResult.length === 0) {
-            console.log("NUEVA BUSQUEDA DE TYPE");
-            console.log(typeId);
+
             searchBySubCategory("type", typeId, "type") // typeSearchResult
-
         }
-
-
     }, [])
 
     useEffect(() => {
         if (typeSearchResult.length !== 0) {
-            console.log(typeSearchResult)
 
             const { pokemon } = typeSearchResult
 
-            // console.log(pokemon)//hasta aca todo bien
-
-            for (const key in pokemon) {
-                // console.log(pokemon[key].pokemon.name)//hasta aca bien
-
+            for (const key in pokemon) {                
                 searchBySubCategory("pokemon", pokemon[key].pokemon.name, "typePokemon")//pokemonByType
             }
         }

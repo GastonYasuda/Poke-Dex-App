@@ -31,8 +31,6 @@ const Character = () => {
 
     useEffect(() => {
         if (pokemonSelect.length !== 0) {
-            console.log(specieSearchResult);//resultado viejo
-            console.log(pokemonSelect);//resultado nuevo
 
             if (pokemonSelect["sprites"].other.dream_world.front_default === null) {
                 setImgUrl(pokemonSelect["sprites"].front_default)

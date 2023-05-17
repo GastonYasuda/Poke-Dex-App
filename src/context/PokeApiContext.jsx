@@ -16,7 +16,6 @@ const PokeApiContext = ({ children }) => {
                     fetch(miPoke.url)
                         .then((response) => response.json())
                         .then((json) => {
-                            // console.log(json)
                             setPokemon(pokemon => [...pokemon, json])
                         })
                         .catch((error) => console.log(error))
@@ -76,6 +75,9 @@ const PokeApiContext = ({ children }) => {
         setPokemonByHabitat([])
         setTypeSearchResult([])
         setPokemonByType([])
+        setEvolutionPokemonResult([])
+        setEvolutionSearchResult([])
+
 
 
         fetch(`https://pokeapi.co/api/v2/${CategoryId}/${SubCategory}?limit=400`) //poner limite 400

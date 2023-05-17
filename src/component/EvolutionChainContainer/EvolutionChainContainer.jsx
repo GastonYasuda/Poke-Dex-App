@@ -12,7 +12,6 @@ const EvolutionChainContainer = ({ specieSearchResult }) => {
         if (specieSearchResult.length !== 0) {
 
             const { evolution_chain } = specieSearchResult
-            // console.log(evolution_chain.url) //me trae un url
             setEvolutionPokemonResult([])
 
             searchByCategory(evolution_chain.url, "evolution")// me trae evolutionSearchResult
