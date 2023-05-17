@@ -1,28 +1,34 @@
-import React from 'react'
-import { Link} from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
+import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { FaSearch } from 'react-icons/fa';
+import BuscadorSearch from '../BuscadorSearch/BuscadorSearch';
+import Button from 'react-bootstrap/esm/Button';
 
-const Buscador = ({ inputCharacter, setInputCharacter }) => {
+const Buscador = () => {
+
+
+    const [searchPoke, setSearchPoke] = useState("")
+
+
 
     const handleChange = (e) => {
-        setInputCharacter(e.target.value)
+        setSearchPoke((e.target.value).toLowerCase())
     }
 
     return (
-        <InputGroup className="mb-3" >
-            <Form.Control
-                placeholder="Search Pokemon by Name or Id"
-                onChange={handleChange}
-            />
-            <Button variant="outline-secondary" id="button-addon2" >
-                <Link to={`/character/${inputCharacter}`} >
-                    <FaSearch />
-                </Link>
-            </Button>
-        </InputGroup>
+        <>
+            <InputGroup className="mb-3" >
+                <Form.Control
+                    placeholder="Search Pokemon by Name or Id"
+                    onChange={handleChange}
+                />
+
+                <Button variant="outline-secondary" id="button-addon2" >
+                    <BuscadorSearch searchPoke={searchPoke} />
+                </Button>
+            </InputGroup>
+
+        </>
     )
 }
 

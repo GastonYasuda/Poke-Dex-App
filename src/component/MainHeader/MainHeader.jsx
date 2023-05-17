@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import pokeNav from "../../assets/pokeNav.png";
 import Buscador from '../../component/Buscador/Buscador';
 import { Link } from 'react-router-dom';
@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 const MainHeader = () => {
 
-    const [inputCharacter, setInputCharacter] = useState("")
 
     return (
         <section className='header'>
@@ -16,7 +15,7 @@ const MainHeader = () => {
                     <img src={pokeNav} alt="pokeNav" />
                 </Link>
 
-                <Buscador inputCharacter={inputCharacter} setInputCharacter={setInputCharacter} />
+                <Buscador />
 
             </div>
 

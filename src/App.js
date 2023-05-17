@@ -27,6 +27,7 @@ function App() {
           <Route path='/type/:typeId' element={<PokeByType />} />
 
           <Route path='*' element={<RouteError />} />
+
         </Routes>
 
         <ToTop />
