@@ -104,7 +104,6 @@ const Character = () => {
                     :
                     <>
                         <Loading />
-                        <RouteError />
                     </>
             }
         </>

@@ -19,7 +19,7 @@ const Buscador = () => {
         <>
             <InputGroup className="mb-3" >
                 <Form.Control
-                    placeholder="Search Pokemon by Name or Id"
+                    placeholder="Search Pokemon by Name"
                     onChange={handleChange}
                 />
 

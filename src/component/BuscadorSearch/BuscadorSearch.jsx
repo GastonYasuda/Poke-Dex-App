@@ -12,12 +12,12 @@ const BuscadorSearch = ({ searchPoke }) => {
 
 
     useEffect(() => {
-
         setInputCharacter("")
 
         const found = pokemon.find(search => search.name === searchPoke)
 
         if (found !== undefined) {
+            console.log(found);
             setInputCharacter(found.name)
         }
 

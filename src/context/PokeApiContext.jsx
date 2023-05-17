@@ -7,7 +7,7 @@ const PokeApiContext = ({ children }) => {
     const [pokemon, setPokemon] = useState([])
     useEffect(() => {
 
-        fetch(`https://pokeapi.co/api/v2/pokemon/?limit=50`) //poner 1300
+        fetch(`https://pokeapi.co/api/v2/pokemon/?limit=1300`) 
 
             .then((response) => response.json())
             .then((json) => {

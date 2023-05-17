@@ -49,6 +49,7 @@ html {
 }
 
 .card__title {
+    font-size: 18px !important;
     color: var(--principalColor);
     transition: filter 0.7s;
 }
@@ -231,7 +232,7 @@ html {
 }
 
 .card__title {
-    font-size: 11pt;
+    font-size: 9pt;
 }
 
 .card__body {
