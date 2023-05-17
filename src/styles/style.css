@@ -246,9 +246,7 @@ html {
     right: 0;
     bottom: 0;
     margin: 10px;
-    /* background-color: transparent; */
     border: none;
-    opacity: 70%;
     transition: all 0.7s;
 }
 
@@ -266,7 +264,6 @@ html {
     margin: 10px;
     background-color: transparent;
     border: none;
-    opacity: 70%;
     transition: all 0.7s;
 }
 
