@@ -75,7 +75,7 @@ const PokeApiContext = ({ children }) => {
         setPokemonByHabitat([])
         setTypeSearchResult([])
         setPokemonByType([])
-        setEvolutionPokemonResult([])
+        // setEvolutionPokemonResult([])
         setEvolutionSearchResult([])
 
 
