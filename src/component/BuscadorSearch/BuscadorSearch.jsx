@@ -12,7 +12,6 @@ const BuscadorSearch = ({ searchPoke }) => {
 
 
     useEffect(() => {
-        console.log(pokemon);
         setInputCharacter("")
 
         const found = pokemon.find(search => search.name === searchPoke)
